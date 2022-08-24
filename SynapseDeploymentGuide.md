@@ -4,7 +4,7 @@
 Pre-requsites - 
 
 <Configure IP firewall rules - Azure Synapse Analytics | Microsoft Docs>
-Managed virtual network - Azure Synapse Analytics | Microsoft Docs
+<Managed virtual network - Azure Synapse Analytics | Microsoft Docs>
 Managed private endpoints - Azure Synapse Analytics | Microsoft Docs
 Data exfiltration protection for Azure Synapse Analytics workspaces - Azure Synapse Analytics | Microsoft Docs
 Connect to a Synapse Studio using private links - Azure Synapse Analytics | Microsoft Docs
