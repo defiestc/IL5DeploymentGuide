@@ -64,5 +64,18 @@ Step 3- Once you have selected *Create*. a screen redirect will take place and y
   - After this has been filled out, select the security tab at the bottom of the screen for next steps.
 ![image](https://user-images.githubusercontent.com/95705084/188924895-79797fe7-226b-42ec-88de-8b3ebfa49f96.png)
 
+Step 4 - For Authentication method, ideally we would only select **Use Only Azure Active Directory (Azure AD authentication)** however, during initial configuration, it is safe to select "*Use both local and Azure Active Directory authentication*" for testing purposes and to ensure everything is setup correctly. We will disable local admin access once everything is validated. More information on this can be found here -  Authorize server and database access using logins and user accounts - Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics | Microsoft Docs![image](https://user-images.githubusercontent.com/95705084/188926251-55225846-3e45-47ea-b1f2-aed05456a47f.png)
+
+![image](https://user-images.githubusercontent.com/95705084/188926284-e1296326-58da-452a-9a5e-8add2d10b6d7.png)
+
+Step 5 - Select the check box **Allow network access to Data Lake Storage Gen2 account** This will assign the mananaged identity within Synapse to the Azure Data Lake store and allow for secure access between the two accounts. More information and steps will be provided on how to validate and test in upcoming sections. (NOTE: If a new ADLS account was provisioned, this will not allow you to select this.)
+
+Step 6 - Select the "*Enable*" option for workspace encryption. This will allow for encryption of data at rest via customer mananaged keys that will be stored and secured within Azure Key Vault. 
+      - Ensure the proper key vault resource and keys are selected when configuring this option. (NOTE: This should have been done prior to creating Synapse Workspace)
+      - Ensure that System assigned is selected and not user assigned. We want to rely solely on the system versus the uesr in the event an account was compromised or disabled\deleted. Additional permissions around the system mananaged identity will need to be granted and steps on how to do so will be provided throughout the later stages of this guide.
+![image](https://user-images.githubusercontent.com/95705084/188928145-1f447c41-102c-48ba-84c7-7ab8c583243e.png)
+
+
+
 
 
