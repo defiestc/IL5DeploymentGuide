@@ -103,7 +103,19 @@ Step 9c - Once approved, the connection state will change from Pending to Approv
 
 As data sources are identified and additional resources need to communicate with Synapse, additional private endpoints need to be created to ensure that all traffic to and from Synapse are secure in nature. The next steps provided below are interchangeable to any endpoint being leveraged but for this example, Azure Cosmos DB is being called. 
 
-Step 10 - 
+Step 10 - Within the "Managed Private Endpoints" section, select +New in the top left of the screen. This will prompt a series of services that will allow for Endpoints to be created against. 
+![image](https://user-images.githubusercontent.com/95705084/189740021-91925c7d-39e1-439b-af12-e31e58fdca46.png)
+
+Step 10a - Select the Endpoint needed for configuration - For this example, Azure Blob Storage will be selected. When selected, this will redirect to a screen requesting information for configuration. (**NOTE**: Please ensure that a proper naming convention is followed in the event that these services need to be leveraged when creating linked services. This could cause confusion later down the line.)
+Please fill out the respective fields and hit "Create". After hitting "Create", this will provision and then redirect to the Approval page in which the resource will need to be approved so it can be used.
+![image](https://user-images.githubusercontent.com/95705084/189740904-b2a10f2b-51d4-4a55-90c4-abe40e4676a5.png)
+
+### Creating Private Endpoint within a restricted network
+
+At times, certain areas have more stringent networking requirements that may require stricter networking controls outside of what was outline above. The steps below will outline how to create a Private Endpoint Hub in which private endpoints not contained within Synapse can be grouped together in a single location. The end goal will provide a single hub, listing all Private Endpoint resources tied to a Vnet and Synapse respectively.
+
+Pre-requisite:
+
 
 
 
