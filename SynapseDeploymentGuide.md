@@ -75,6 +75,36 @@ Step 6 - Select the "*Enable*" option for workspace encryption. This will allow 
       - Ensure that System assigned is selected and not user assigned. We want to rely solely on the system versus the uesr in the event an account was compromised or disabled\deleted. Additional permissions around the system mananaged identity will need to be granted and steps on how to do so will be provided throughout the later stages of this guide.
 ![image](https://user-images.githubusercontent.com/95705084/188928145-1f447c41-102c-48ba-84c7-7ab8c583243e.png)
 
+Step 7 - Once these options have bene selected and configured, please click the *"Next: NEtworking*" tab at the bottom to be redirected to the networking portion of Synapse.
+In this screen, you will note only a few settings, however each setting plays a huge factor in how Synapse needs to be secured and accessed. As the progression of this guide takes place, more and more options to secure endpoints across Azure services to Synapse will need to be done. This is a primary step which enables additional steps to take place. (**NOTE**: Please keep in mind that once these Network settings have been configured, they cannot be changed and a new workspace would have to be created. Please ensure that the pre-requisites outlined above have been identified and are ready for deployment)
+    - Step 7a. Please ensure that "Enable" is selected for Managed virtual Network. The logic behind this selection is to ensure that Synapse is managing the Virtual network traffic and rules versus it being done at the Vnet level. 
+When enabling Managed Virtual Network, a new series of options will pop-up, please select the following as below: 
+    - Step 7b. Select "Yes" on "Create Mananaged Private Endpoint to Primary Data storage account". This will create a private and direct line of communication, or "secure traffic" to the Azure Data Lake Gen2 account.
+    - Step 7c. This step is optional and can be done at a later time but if all endpoints have already been identified in which Synapse needs to communicate with securely, they can be added as shown below.
+    - Step 7d. Ensure that "Public Network access to workspace endpoints" is disabled. This is important as we want to disallow public network access and keep it as secure as possible.
+![image](https://user-images.githubusercontent.com/95705084/189729058-c061a106-1ff7-417d-9ea8-05db1b152ab3.png)
+
+Step 8 - After this has been set, please hit "Review + Create". (**NOTE**: If resource tagging is being done, please select "Tags" and tag the resource based on what policy is in place.
+![image](https://user-images.githubusercontent.com/95705084/189729357-aad0bf4f-538f-4f1b-beab-9ddc8cc18a85.png)
+
+Step 9 - After the resource has been created, select it and open Synapse Studio --> Click on the Toolbox Icon to the bottom left labeled "Manage". Once inside of the Manage screen, please click into the Security portion and select "Managed Private Endpoints". This will show 3 private endpoints that were created upon the creation of Synapse itself, with one endpoint needing approval before being able to successfully leverage it.
+![image](https://user-images.githubusercontent.com/95705084/189730082-5b9e3ec0-8822-4c34-9eda-539a68f41baf.png)
+
+Step 9a - Synapse requests approval of the Azure Data Lake resource to ensure that it is the correct resource and the proper rules are set in place. In order to approve ADLS Gen2, please click into the resource --> Manage approvals in Azure Portal.
+![image](https://user-images.githubusercontent.com/95705084/189731448-d6996b9b-4fb6-4a7f-aadf-5618cbf3cb26.png)
+
+Step 9b - After clicking into it, a redirect will take place in which it will ask to approve or reject the endpoint. Please select the check box --> Select Approve
+![image](https://user-images.githubusercontent.com/95705084/189731727-dea80472-7fe2-4092-9e3c-8843a6a769af.png)
+
+Step 9c - Once approved, the connection state will change from Pending to Approved and the resource can now be used. (**NOTE**: Please take note that the status within Synapse for the resource will tak ea few minutes to update. Continue to refresh if needed until the approval state is showing "Approved")
+![image](https://user-images.githubusercontent.com/95705084/189732593-833be861-db0c-483b-a37b-1583826ccdf1.png)
+
+###Creating Private Endpoints
+
+As data sources are identified and additional resources need to communicate with Synapse, additional private endpoints need to be created to ensure that all traffic to and from Synapse are secure in nature. The next steps provided below are interchangeable to any endpoint being leveraged but for this example, Azure Cosmos DB is being called. 
+
+Step 10 - 
+
 
 
 
