@@ -99,7 +99,7 @@ Step 9b - After clicking into it, a redirect will take place in which it will as
 Step 9c - Once approved, the connection state will change from Pending to Approved and the resource can now be used. (**NOTE**: Please take note that the status within Synapse for the resource will tak ea few minutes to update. Continue to refresh if needed until the approval state is showing "Approved")
 ![image](https://user-images.githubusercontent.com/95705084/189732593-833be861-db0c-483b-a37b-1583826ccdf1.png)
 
-###Creating Private Endpoints
+### Creating Private Endpoints
 
 As data sources are identified and additional resources need to communicate with Synapse, additional private endpoints need to be created to ensure that all traffic to and from Synapse are secure in nature. The next steps provided below are interchangeable to any endpoint being leveraged but for this example, Azure Cosmos DB is being called. 
 
