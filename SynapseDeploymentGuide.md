@@ -115,6 +115,37 @@ Please fill out the respective fields and hit "Create". After hitting "Create", 
 At times, certain areas have more stringent networking requirements that may require stricter networking controls outside of what was outline above. The steps below will outline how to create a Private Endpoint Hub in which private endpoints not contained within Synapse can be grouped together in a single location. The end goal will provide a single hub, listing all Private Endpoint resources tied to a Vnet and Synapse respectively.
 
 Pre-requisite:
+Please ensure the following 4 network outbound security rules with service tags are in place:
+
+    - AzureResourceManager
+    - AzureFrontDoor.FrontEnd
+    - AzureActiveDirectory
+    - AzureMonitor (This is optional and only if data is welcomed to be shared with Microsoft for additional insights and supportablity)
+    
+Step 11 - Create Private Link Hub resource within Azure Portal by doing a search on Azure Synapse Analytics (private link hubs) and fill out the necessary information as shown below.
+![image](https://user-images.githubusercontent.com/95705084/189743048-71d28e7e-fc89-4a52-9d88-4f7f0269bc86.png)
+
+Step 11a - Click Next at the bottom and inside of the "Resource" Tab, select the private link hub that was created from Step 11.
+![image](https://user-images.githubusercontent.com/95705084/189743204-417711a6-617a-4fe9-9250-32ce8b0ff58a.png)
+
+Step 11b - Click Next at the bottom and inside of the "Configuration" tab, ensure the following is selected:
+
+    - For Virtual network, select the Vnet this will be tied against.
+    - For Subnet, select the subnet within the Vnet this will be tied against.
+    - For integrate with private DNS zone, select No. The expectation is to ensure that this entry is controlled within your respective DNS zone, and not create a seperate DNZ entry via Azure. Less management and easier to control via your own DNS.
+![image](https://user-images.githubusercontent.com/95705084/189743925-e1352523-2b32-42ab-a8fe-9a256814aab1.png)
+
+**NOTE**: If this is not an option, steps below on how to create an entry via Azure Private DNS zone is below:
+
+Step 12- 
+ - For Virtaul network, seelct the VNet this will be tied against.
+ - For Subnet, select the subnet within the Vnet this will be tied against.
+ - For integrate with Private DNS zone, select Yes. This will create a series of DNS entries tied to each Private Endpoint within Synapse that will be leveraged for accessiblity. In addition, other services within Azure will use these endpoints for connectivity and communication. (As shown below)
+![image](https://user-images.githubusercontent.com/95705084/189750274-778087c3-d335-4ede-9e35-ba4c39ee2100.png)
+
+Step 13 - Hit Next and validate connectivity by selecting the Synapse Workspace URL.
+
+
 
 
 
