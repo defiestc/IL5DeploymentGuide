@@ -1,1 +1,0 @@
-# Azure Cognitive Search Overview
