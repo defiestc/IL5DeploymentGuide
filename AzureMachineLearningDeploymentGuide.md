@@ -12,7 +12,7 @@
 
  
 
-# Table of Contents {#table-of-contents .TOC-Heading}
+# Table of Contents 
 
 [Azure Machine Learning in IL5
 [1](#azure-machine-learning-in-il5)](#azure-machine-learning-in-il5)
@@ -57,12 +57,10 @@ To create a virtual network, use the following steps:
     Network** entry, and then select **Create**.
 
 ![The create resource UI
-search](./media/image1.png){width="6.467361111111111in"
-height="3.084722222222222in"}
+search](./media/image1.png)
 
 ![Virtual network
-create](./media/image2.png){width="4.980555555555555in"
-height="2.876388888888889in"}
+create](./media/image2.png)
 
 2.  From the **Basics** tab, select the Azure **subscription** to use
     for this resource and then select or create a new **resource
@@ -70,13 +68,12 @@ height="2.876388888888889in"}
     your virtual network and select the **region** to create it in.
 
 ![Image of the basic virtual network
-config](./media/image3.png){width="7.5in" height="5.247916666666667in"}
+config](./media/image3.png)
 
 3.  Select **IP Addresses** tab. The default settings should be like the
     following image:
 
-![Default IP Address screen](./media/image4.png){width="7.5in"
-height="6.320833333333334in"}
+![Default IP Address screen](./media/image4.png)
 
 Use the following steps to configure the IP address and configure a
 subnet for training and scoring resources:
@@ -110,8 +107,7 @@ up to **you** to plan your network infrastructure.
 2.  Select the **Default** subnet and then select **Remove subnet**.
 
 ![Screenshot of deleting default
-subnet](./media/image5.png){width="6.227083333333334in"
-height="1.292361111111111in"}
+subnet](./media/image5.png)
 
 3.  To create a subnet to contain the workspace, dependency services,
     and resources used for training, select **+ Add subnet** and set the
@@ -122,8 +118,7 @@ height="1.292361111111111in"}
 
     -   **Subnet address range**: 172.16.0.0/24
 
-![Screenshot of Training subnet](./media/image6.png){width="7.5in"
-height="4.905555555555556in"}
+![Screenshot of Training subnet](./media/image6.png)
 
 ** Tip**
 
@@ -149,8 +144,7 @@ a.  To create a subnet for compute resources used to score your models,
 
     -   **Subnet address range**: 172.16.1.0/24
 
-![Screenshot of Scoring subnet](./media/image7.png){width="7.5in"
-height="4.9006944444444445in"}
+![Screenshot of Scoring subnet](./media/image7.png)
 
 ** Tip**
 
@@ -183,19 +177,17 @@ height="4.9006944444444445in"}
 
 Leave the other fields at the default values.
 
-![Screenshot of Bastion config](./media/image8.png){width="7.5in"
-height="5.667361111111111in"}
+![Screenshot of Bastion config](./media/image8.png)
 
 1.  Select **Review + create**.
 
 ![Screenshot showing the review + create
-button](./media/image9.png){width="7.5in" height="6.738888888888889in"}
+button](./media/image9.png)
 
 2.  Verify that the information is correct, and then select **Create**.
 
 ![Screenshot of the review
-page](./media/image10.png){width="6.792361111111111in"
-height="7.83125in"}
+page](./media/image10.png)
 
 **Limitations**
 
@@ -287,7 +279,7 @@ When you create the key vault, select **Enable purge protection**, as
 shown in the following image.
 
 ![Screenshot showing how to enable purge protection when creating a key
-vault](./media/image11.png){width="7.5in" height="6.196527777777778in"}
+vault](./media/image11.png)
 
 To enable purge protection on an existing key vault, follow these steps:
 
@@ -310,8 +302,7 @@ follow these steps:
 2.  Click the \"+ Add\" Button to add a private endpoint.
 
 ![Screenshot that shows the \'Networking\' tab on the \'Create key
-vault\' page.](./media/image12.png){width="7.5in"
-height="4.076388888888889in"}
+vault\' page.](./media/image12.png)
 
 3.  In the \"Location\" field of the Create Private Endpoint Blade,
     select the region in which your virtual network is located.
@@ -327,8 +318,7 @@ height="4.076388888888889in"}
 7.  Select \"Ok\".
 
 ![Graphical user interface, text, application, email Description
-automatically generated](./media/image13.png){width="7.5in"
-height="7.072222222222222in"}
+automatically generated](./media/image13.png)
 
 You will now be able to see the configured private endpoint. You now
 have the option to delete and edit this private endpoint. Select the
@@ -466,8 +456,7 @@ groups](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/act
     Access Policy**:
 
 ![Select Access policies, selecting Add role
-assignment](./media/image14.png){width="7.5in"
-height="3.1819444444444445in"}
+assignment](./media/image14.png)
 
 3.  Select the permissions you want under **Certificate
     permissions**, **Key permissions**, and **Secret permissions**. You
@@ -475,8 +464,7 @@ height="3.1819444444444445in"}
     combinations:
 
 ![Specifying access policy
-permissions](./media/image15.png){width="4.604166666666667in"
-height="5.675in"}
+permissions](./media/image15.png)
 
 4.  Under **Select principal**, choose the **None selected** link to
     open the **Principal** selection pane. Enter the name of the user,
@@ -484,7 +472,7 @@ height="5.675in"}
     result, then choose **Select**.
 
 ![Selecting the security principal for the access
-policy](./media/image16.png){width="7.5in" height="5.034722222222222in"}
+policy](./media/image16.png)
 
 If you\'re using a managed identity for the app, search for and select
 the name of the app itself. (For more information on security
@@ -495,15 +483,13 @@ authentication](https://docs.microsoft.com/en-us/azure/key-vault/general/authent
     access policy.
 
 ![Adding the access policy with the security principal
-assigned](./media/image17.png){width="4.50625in"
-height="5.811805555555556in"}
+assigned](./media/image17.png)
 
 6.  Back on the **Access policies** page, verify that your access policy
     is listed under **Current Access Policies**, then select **Save**.
     Access policies aren\'t applied until you save them.
 
-![Saving the access policy changes](./media/image18.png){width="7.5in"
-height="3.6118055555555557in"}
+![Saving the access policy changes](./media/image18.png)
 
 **Configure customer-managed keys for a new account**
 
@@ -545,8 +531,7 @@ automatic updating of the key version, follow these steps:
     user-assigned managed identity.
 
 ![Screenshot showing how to configure customer-managed keys for a new
-storage account in Azure portal](./media/image19.png){width="7.5in"
-height="8.064583333333333in"}
+storage account in Azure portal](./media/image19.png)
 
 7.  Select **Review + create** to validate and create the new account.
 
@@ -602,7 +587,7 @@ steps:
     to **Microsoft Managed Keys**, as shown in the following image.
 
 ![Screenshot showing encryption options in Azure
-portal](./media/image20.png){width="7.5in" height="2.178472222222222in"}
+portal](./media/image20.png)
 
 3.  Select the **Customer Managed Keys** option.
 
@@ -616,8 +601,7 @@ portal](./media/image20.png){width="7.5in" height="2.178472222222222in"}
 7.  Select the key from the key vault. You can also create a new key.
 
 ![Screenshot showing how to select key vault and key in Azure
-portal.](./media/image21.png){width="7.5in"
-height="4.286111111111111in"}
+portal.](./media/image21.png)
 
 8.  Select the type of identity to use to authenticate access to the key
     vault. The options include **System-assigned** (the default)
@@ -637,8 +621,7 @@ height="4.286111111111111in"}
 
 ![Screenshot showing how to select a user-assigned managed identity for
 key vault
-authentication](./media/image22.png){width="4.519444444444445in"
-height="4.915277777777778in"}
+authentication](./media/image22.png)
 
 1.  Save your changes.
 
@@ -649,8 +632,7 @@ type of managed identity used to authorize access to the key vault and
 the principal ID for the managed identity.
 
 ![Screenshot showing automatic updating of the key version
-enabled](./media/image23.png){width="7.5in"
-height="5.868055555555555in"}
+enabled](./media/image23.png)
 
 **Configure encryption for manual updating of key versions**
 
@@ -675,7 +657,7 @@ To specify a key as a URI, follow these steps:
     URI.
 
 ![Screenshot showing key vault key URI in Azure
-portal](./media/image24.png){width="7.5in" height="6.121527777777778in"}
+portal](./media/image24.png)
 
 3.  In the **Encryption key** settings for your storage account, choose
     the **Enter key URI** option.
@@ -685,8 +667,7 @@ portal](./media/image24.png){width="7.5in" height="6.121527777777778in"}
     version.
 
 ![Screenshot showing how to enter key URI in Azure
-portal](./media/image25.png){width="7.5in"
-height="5.8909722222222225in"}
+portal](./media/image25.png)
 
 5.  Specify the subscription that contains the key vault.
 
@@ -716,14 +697,12 @@ See the Azure Documentation for:
     network. Enter a unique **Registry name** and set
     the **SKU** to **Premium**.
 
-![Create a container registry](./media/image26.png){width="7.5in"
-height="6.677777777777778in"}
+![Create a container registry](./media/image26.png)
 
 3.  From the **Networking** tab, select **Private endpoint** and then
     select **+ Add**.
 
-![Container registry networking](./media/image27.png){width="7.5in"
-height="4.623611111111111in"}
+![Container registry networking](./media/image27.png)
 
 4.  On the **Create private endpoint** form, use the following values
     (or substitute your own values):
@@ -752,8 +731,7 @@ height="4.623611111111111in"}
 Select **OK** to create the private endpoint.
 
 ![Configure container registry private
-endpoint](./media/image28.png){width="7.5in"
-height="7.042361111111111in"}
+endpoint](./media/image28.png)
 
 1.  Select **Review + create**. Verify that the information is correct,
     and then select **Create**.
@@ -762,16 +740,14 @@ height="7.042361111111111in"}
     resource**.
 
 ![Select \'go to
-resource\'](./media/image29.png){width="6.571527777777778in"
-height="4.136111111111111in"}
+resource\'](./media/image29.png)
 
 3.  From the left of the page, select **Access keys**, and then
     enable **Admin user**. This setting is required when using Azure
     Container Registry inside a virtual network with Azure Machine
     Learning.
 
-![Screenshot of admin user toggle](./media/image30.png){width="7.5in"
-height="2.7006944444444443in"}
+![Screenshot of admin user toggle](./media/image30.png)
 
 **Create a workspace**
 
@@ -780,8 +756,7 @@ height="2.7006944444444443in"}
     resource** and then enter **Machine Learning**. Select the **Machine
     Learning** entry, and then select **Create**.
 
-![{alt-text}](./media/image31.png){width="3.7402777777777776in"
-height="2.5972222222222223in"}
+![{alt-text}](./media/image31.png)
 
 2.  From the **Basics** tab, select the **subscription**, **resource
     group**, and **Region** you previously used for the virtual network.
@@ -799,14 +774,12 @@ height="2.5972222222222223in"}
     -   **Container registry**: Use the container registry you created
         previously.
 
-![Basic workspace configuration](./media/image32.png){width="7.5in"
-height="7.559722222222222in"}
+![Basic workspace configuration](./media/image32.png)
 
 1.  From the **Networking** tab, select **Private endpoint** and then
     select **+ add**.
 
-![Workspace networking](./media/image33.png){width="7.5in"
-height="4.1875in"}
+![Workspace networking](./media/image33.png)
 
 2.  On the **Create private endpoint** form, use the following values
     (or substitute your own values):
@@ -837,7 +810,7 @@ height="4.1875in"}
 Select **OK** to create the private endpoint.
 
 ![Screenshot of workspace private network
-config](./media/image34.png){width="7.5in" height="7.554861111111111in"}
+config](./media/image34.png)
 
 3.  Select **Review + create**. Verify that the information is correct,
     and then select **Create**.
@@ -849,16 +822,14 @@ config](./media/image34.png){width="7.5in" height="7.554861111111111in"}
     endpoint** column:
 
 ![Screenshot of workspace private endpoint
-connections](./media/image35.png){width="7.5in"
-height="1.6034722222222222in"}
+connections](./media/image35.png)
 
 6.  Once the private endpoint information appears, select **DNS
     configuration** from the left of the page. Save the IP address and
     fully qualified domain name (FQDN) information on this page, as it
     will be used later.
 
-![screenshot of IP and FQDN entries](./media/image36.png){width="7.5in"
-height="3.1777777777777776in"}
+![screenshot of IP and FQDN entries](./media/image36.png)
 
 ** Important**
 
@@ -879,29 +850,25 @@ following steps to enable studio:
     select **Private endpoint connections**.
 
 ![Screenshot of storage private
-endpoints](./media/image37.png){width="7.5in"
-height="2.6305555555555555in"}
+endpoints](./media/image37.png)
 
 2.  For **each private endpoint listed**, use the following steps:
 
     1.  Select the link in the **Private endpoint** column.
 
-![Screenshot of endpoints to select](./media/image38.png){width="7.5in"
-height="2.6305555555555555in"}
+![Screenshot of endpoints to select](./media/image38.png)
 
 2.  Select **Access control (IAM)** from the left side.
 
 3.  Select **+ Add**, and then **Add role assignment (Preview)**.
 
 ![Access control (IAM) page with Add role assignment menu
-open.](./media/image39.png){width="6.986805555555556in"
-height="3.1041666666666665in"}
+open.](./media/image39.png)
 
 4.  On the **Role** tab, select the **Reader**.
 
 ![Add role assignment page with Role tab
-selected.](./media/image40.png){width="7.5in"
-height="4.876388888888889in"}
+selected.](./media/image40.png)
 
 5.  On the **Members** tab, select **User, group, or service
     principal** in the **Assign access to** area and then select **+
@@ -970,7 +937,7 @@ Do not select a Gen2 image.
 3.  You can leave other fields at the default values.
 
 4.  ![Image of VM basic
-    configuration](./media/image41.png){width="6.55in" height="10.0in"}
+    configuration](./media/image41.png)
 
 ```{=html}
 <!-- -->
@@ -985,8 +952,7 @@ Do not select a Gen2 image.
 
     -   Leave the other fields at the default value.
 
-![Image of VM network configuration](./media/image42.png){width="7.5in"
-height="9.17013888888889in"}
+![Image of VM network configuration](./media/image42.png)
 
 2.  Select **Review + create**. Verify that the information is correct,
     and then select **Create**.
@@ -998,16 +964,14 @@ height="9.17013888888889in"}
 
 2.  From the top of the page, select **Connect** and then **Bastion**.
 
-![Image of the connect/bastion UI](./media/image43.png){width="7.5in"
-height="2.4166666666666665in"}
+![Image of the connect/bastion UI](./media/image43.png)
 
 3.  Select **Use Bastion**, and then provide your authentication
     information for the virtual machine, and a connection will be
     established in your browser.
 
 ![Image of use bastion
-dialog](./media/image44.png){width="6.383333333333334in"
-height="1.7465277777777777in"}
+dialog](./media/image44.png)
 
 **Create a compute cluster and compute instance**
 
@@ -1033,22 +997,19 @@ directories, use the **Directory and Subscription** dropdown to select
 the one that contains the workspace.
 
 ![Screenshot of the select workspace
-dialog](./media/image45.png){width="4.66875in"
-height="4.084722222222222in"}
+dialog](./media/image45.png)
 
 4.  From studio, select **Compute**, **Compute clusters**, and then **+
     New**.
 
 ![Screenshot of new compute cluster
-workflow](./media/image46.png){width="7.5in"
-height="5.174305555555556in"}
+workflow](./media/image46.png)
 
 5.  From the **Virtual Machine** dialog, select **Next** to accept the
     default virtual machine configuration.
 
 ![Screenshot of compute cluster vm
-settings](./media/image47.png){width="7.5in"
-height="4.906944444444444in"}
+settings](./media/image47.png)
 
 6.  From the **Configure Settings** dialog, enter **cpu-cluster** as
     the **Compute name**. Set the **Subnet** to **Training** and then
@@ -1061,28 +1022,25 @@ We recommend leaving the minimum number of nodes at 0 to reduce costs
 when the cluster is not in use.
 
 ![Screenshot of new compute cluster
-settings](./media/image48.png){width="7.5in"
-height="6.198611111111111in"}
+settings](./media/image48.png)
 
 7.  From studio, select **Compute**, **Compute instance**, and then **+
     New**.
 
 ![Screenshot of new compute instance
-workflow](./media/image49.png){width="7.5in"
-height="5.336111111111111in"}
+workflow](./media/image49.png)
 
 8.  From the **Virtual Machine** dialog, enter a unique **Computer
     name** and select **Next: Advanced Settings**.
 
 ![Screenshot of compute instance vm
-settings](./media/image50.png){width="7.5in"
-height="5.594444444444444in"}
+settings](./media/image50.png)
 
 9.  From the **Advanced Settings** dialog, set
     the **Subnet** to **Training**, and then select **Create**.
 
 ![Screenshot of compute instance
-settings](./media/image51.png){width="7.5in" height="4.11875in"}
+settings](./media/image51.png)
 
 ** Tip**
 
@@ -1099,8 +1057,7 @@ compute instance:
 
 The following screenshot shows an example of these rules:
 
-![Screenshot of NSG](./media/image52.png){width="7.5in"
-height="2.6354166666666665in"}
+![Screenshot of NSG](./media/image52.png)
 
 For more information on creating a compute cluster and compute cluster,
 including how to do so with Python and the CLI, see the following
@@ -1114,8 +1071,7 @@ articles:
 
 **Configure image builds**
 
-**APPLIES TO:** ![](./media/image53.png){width="0.30486111111111114in"
-height="0.175in"} [Azure CLI ml extension **v2
+**APPLIES TO:** ![](./media/image53.png) [Azure CLI ml extension **v2
 (current)**](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-cli)
 
 When Azure Container Registry is behind the virtual network, Azure
@@ -1194,8 +1150,7 @@ From studio, select **Compute**, **Compute clusters**, and then select
 the compute instance. Finally, select **Stop** from the top of the page.
 
 ![Screenshot of stop button for compute
-instance](./media/image54.png){width="7.5in"
-height="2.9402777777777778in"}
+instance](./media/image54.png)
 
 **Stop the jump box**
 
@@ -1204,14 +1159,13 @@ and then use the **Stop** button. When you are ready to use it again,
 use the **Start** button to start it.
 
 ![Screenshot of stop button for the
-VM](./media/image55.png){width="7.5in" height="1.2118055555555556in"}
+VM](./media/image55.png)
 
 You can also configure the jump box to automatically shut down at a
 specific time. To do so, select **Auto-shutdown**, **Enable**, set a
 time, and then select **Save**.
 
-![Screenshot of auto-shutdown option](./media/image56.png){width="7.5in"
-height="3.172222222222222in"}
+![Screenshot of auto-shutdown option](./media/image56.png)
 
 ## Step D: Configure Firewall and Configure Inbound and Outbound Traffic
 
@@ -1443,8 +1397,7 @@ Cluster. The following image shows an example IP address based UDR in
 the Azure portal:
 
 ![Image of a user-defined route
-configuration](./media/image57.png){width="6.071527777777778in"
-height="3.2270833333333333in"}
+configuration](./media/image57.png)
 
 For information on configuring UDR, see [Route network traffic with a
 routing
@@ -2174,7 +2127,7 @@ role.
     can also set new defaults in the **Datastore** management page.
 
 ![Screenshot showing where default datastores can be
-found](./media/image58.png){width="7.5in" height="5.198611111111111in"}
+found](./media/image58.png)
 
 The following table describes why managed identity authentication is
 used for your workspace default storage accounts.
@@ -2228,8 +2181,7 @@ To create a new datastore, select **+ New datastore**.
     Learning studio**.
 
 ![Screenshot showing how to enable managed workspace
-identity](./media/image59.png){width="7.5in"
-height="4.435416666666667in"}
+identity](./media/image59.png)
 
 4.  In the **Networking** settings for the **Azure Storage Account**,
     add the Microsoft.MachineLearningService/workspaces **Resource
