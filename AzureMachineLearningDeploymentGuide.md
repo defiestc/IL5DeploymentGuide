@@ -191,16 +191,11 @@ environment](https://docs.microsoft.com/en-us/azure/machine-learning/v1/how-to-s
 
 ** Tip**
 
-As an alternative to Azure Container Instances, try Azure Machine
-Learning managed online endpoints. For more information, see [**Enable
-network isolation for managed online endpoints
-(preview)**](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-secure-online-endpoint).
+As an alternative to Azure Container Instances, try Azure Machine Learning managed online endpoints. For more information, see [**Enable network isolation for managed online endpoints (preview)**](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-secure-online-endpoint).
 
  
 
 ## Step B. Create Azure Key Vault with Customer-Managed Keys
-
-**IL5 Regulations**
 
 **IL5 Regulations**
 
@@ -867,15 +862,10 @@ in the VNet. You can connect to it using your web browser and Azure
 Bastion. The following table lists several other ways that you might
 connect to the secure workspace:
 
-  ----------------------------------------------------------------------------------------------------------------------------------------------------------
-  **Method**                                                                                   **Description**
-  -------------------------------------------------------------------------------------------- -------------------------------------------------------------
-  [Azure VPN                                                                                   Connects on-premises networks to the VNet over a private
-  gateway](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways)   connection. Connection is made over the public internet.
-
-  [ExpressRoute](https://azure.microsoft.com/services/expressroute/)                           Connects on-premises networks into the cloud over a private
-                                                                                               connection. Connection is made using a connectivity provider.
-  ----------------------------------------------------------------------------------------------------------------------------------------------------------
+| **Method** | **Description** |
+| --- | --- |
+| [Azure VPN gateway](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways) | Connects on-premises networks to the VNet over a private connection. Connection is made over the public internet. |
+| [ExpressRoute](https://azure.microsoft.com/services/expressroute/) | Connects on-premises networks into the cloud over a private connection. Connection is made using a connectivity provider. |
 
 ** Important**
 
@@ -1180,11 +1170,11 @@ Azure Machine Learning requires both inbound and outbound access to the public i
 
   **Tip**
 
-If you need the IP addresses instead of service tags, use one of the following options:
+>If you need the IP addresses instead of service tags, use one of the following options:
 
-- Download a list from [**Azure IP Ranges and Service Tags**](https://www.microsoft.com/download/details.aspx?id=56519).
-- Use the Azure CLI [**az network list-service-tags**](https://docs.microsoft.com/en-us/cli/azure/network#az-network-list-service-tags) command.
-- Use the Azure PowerShell [**Get-AzNetworkServiceTag**](https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkservicetag) command.
+>- Download a list from [**Azure IP Ranges and Service Tags**](https://www.microsoft.com/download/details.aspx?id=56519).
+>- Use the Azure CLI [**az network list-service-tags**](https://docs.microsoft.com/en-us/cli/azure/network#az-network-list-service-tags) command.
+>- Use the Azure PowerShell [**Get-AzNetworkServiceTag**](https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkservicetag) command.
 
 The IP addresses may change periodically.
 
@@ -1237,10 +1227,10 @@ Using service tags with user-defined routes is now GA. For more information, see
 
   **Tip**
 
-While a compute instance without a public IP (a preview feature) does not need a UDR for this inbound traffic, you will still need these UDRs if you also use a compute cluster or a compute instance with a public IP.
+>While a compute instance without a public IP (a preview feature) does not need a UDR for this inbound traffic, you will still need these UDRs if you also use a compute cluster or a compute instance with a public IP.
 
-- [IP Address routes](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-access-azureml-behind-firewall?tabs=ipaddress%2Cgov#tabpanel_1_ipaddress)
-- [Service tag routes](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-access-azureml-behind-firewall?tabs=ipaddress%2Cgov#tabpanel_1_servicetag)
+>- [IP Address routes](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-access-azureml-behind-firewall?tabs=ipaddress%2Cgov#tabpanel_1_ipaddress)
+>- [Service tag routes](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-access-azureml-behind-firewall?tabs=ipaddress%2Cgov#tabpanel_1_servicetag)
 
 For the Azure Machine Learning service, you must add the IP address of both the  **primary**  and  **secondary**  regions. To find the secondary region, see the [Cross-region replication in Azure](https://docs.microsoft.com/en-us/azure/availability-zones/cross-region-replication-azure). For example, if your Azure Machine Learning service is in East US 2, the secondary region is Central US.
 
@@ -1280,7 +1270,7 @@ For information on configuring UDR, see [Route network traffic with a routing ta
 
   **Note**
 
-This is not a complete list of the hosts required for all Python resources on the internet, only the most commonly used. For example, if you need access to a GitHub repository or other host, you must identify and add the required hosts for that scenario.
+>This is not a complete list of the hosts required for all Python resources on the internet, only the most commonly used. For example, if you need access to a GitHub repository or other host, you must identify and add the required hosts for that scenario.
 
 | **Host name** | **Purpose** |
 | --- | --- |
@@ -1318,7 +1308,7 @@ For more information on configuring application rules, see [Deploy and configure
 
 **Note**
 
-\<region\> is the lowcase full spelling of Azure Region, for example, eastus, southeastasia.
+>\<region\> is the lowcase full spelling of Azure Region, for example, eastus, southeastasia.
 
 **Microsoft hosts**
 
@@ -1401,12 +1391,12 @@ To support logging of metrics and other monitoring information to Azure Monitor 
 
   **Note**
 
-The information logged to these hosts is also used by Microsoft Support to be able to diagnose any problems you run into with your workspace.
+>The information logged to these hosts is also used by Microsoft Support to be able to diagnose any problems you run into with your workspace.
 
-- **dc.applicationinsights.azure.com**
-- **dc.applicationinsights.microsoft.com**
-- **dc.services.visualstudio.com**
-- \ ***.in.applicationinsights.azure.com**
+>- **dc.applicationinsights.azure.com**
+>- **dc.applicationinsights.microsoft.com**
+>- **dc.services.visualstudio.com**
+>- \ ***.in.applicationinsights.azure.com**
 
 For a list of IP addresses for these hosts, see [IP addresses used by Azure Monitor](https://docs.microsoft.com/en-us/azure/azure-monitor/app/ip-addresses).
 
@@ -1679,27 +1669,10 @@ found](./media/image58.png)
 The following table describes why managed identity authentication is
 used for your workspace default storage accounts.
 
-  -------------------------------------------------------------------------
-  **Storage   **Notes**
-  account**   
-  ----------- -------------------------------------------------------------
-  Workspace   Stores model assets from the designer. Enable managed
-  default     identity authentication on this storage account to deploy
-  blob        models in the designer. If managed identity authentication is
-  storage     disabled, the user\'s identity is used to access data stored
-              in the blob.\
-              \
-              You can visualize and run a designer pipeline if it uses a
-              non-default datastore that has been configured to use managed
-              identity. However, if you try to deploy a trained model
-              without managed identity enabled on the default datastore,
-              deployment will fail regardless of any other datastores in
-              use.
-
-  Workspace   Stores AutoML experiment assets. Enable managed identity
-  default     authentication on this storage account to submit AutoML
-  file store  experiments.
-  -------------------------------------------------------------------------
+| **Storage account** | **Notes** |
+| --- | --- |
+| Workspace default blob storage | Stores model assets from the designer. Enable managed identity authentication on this storage account to deploy models in the designer. If managed identity authentication is disabled, the user's identity is used to access data stored in the blob. <br />You can visualize and run a designer pipeline if it uses a non-default datastore that has been configured to use managed identity. However, if you try to deploy a trained model without managed identity enabled on the default datastore, deployment will fail regardless of any other datastores in use. |
+| Workspace default file store | Stores AutoML experiment assets. Enable managed identity authentication on this storage account to submit AutoML experiments. |
 
 4.  **Configure datastores to use managed identity authentication**.
     After you add an Azure storage account to your virtual network with
@@ -1827,20 +1800,10 @@ firewall**](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-acces
 Make sure your environment complies with the latest enumeration of IL5
 standards, including the following points.
 
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  **\                                                                                                                                                                                               **Description**                                                                                                                                                                   **Effect(s)**   **Version\
-  ~(Azure\ portal)~**                                                                                                                                                                                                                                                                                                                                                                                 ~(GitHub)~**
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  [** Learning workspaces should use private                                                                                                                                                        **Azure Private Link lets you connect your virtual network to Azure services without a public IP address at the source or destination. The Private Link platform handles the      **Audit, Deny,  [**1.1.0**](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/Workspace_PrivateEndpoint_Audit.json)
-  link**](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F40cec1dd-a100-4920-b15b-3024fe8901ab)   connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to Azure Machine Learning workspaces, data leakage risks are         Disabled**      
-                                                                                                                                                                                                    reduced. Learn more about private links                                                                                                                                                           
-                                                                                                                                                                                                    at: [https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-private-link).**                   
-
-  [**Azure Machine Learning workspaces should be encrypted with a customer-managed                                                                                                                  **Manage encryption at rest of Azure Machine Learning workspace data with customer-managed keys. By default, customer data is encrypted with service-managed keys, but            **Audit, Deny,  [**1.0.3**](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Machine%20Learning/Workspace_CMKEnabled_Audit.json)
-  key**](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fba769a63-b8cc-4b2d-abf6-ac33c7204be8)    customer-managed keys are commonly required to meet regulatory compliance standards. Customer-managed keys enable the data to be encrypted with an Azure Key Vault key created    Disabled**      
-                                                                                                                                                                                                    and owned by you. You have full control and responsibility for the key lifecycle, including rotation and management. Learn more                                                                   
-                                                                                                                                                                                                    at [https://aka.ms/azureml-workspaces-cmk](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-create-workspace-template#deploy-an-encrypted-workspace%22).**                          
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|**(Azure portal)** | **Description** | **Effect(s)** | **Version <br />(GitHub)** |
+| --- | --- | --- | --- |
+| [  **Learning workspaces should use private link**](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F40cec1dd-a100-4920-b15b-3024fe8901ab) | **Azure Private Link lets you connect your virtual network to Azure services without a public IP address at the source or destination. The Private Link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to Azure Machine Learning workspaces, data leakage risks are reduced. Learn more about private links at: ** [**https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link**](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-private-link) **.** | **Audit, Deny, Disabled** | [**1.1.0**](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/Workspace_PrivateEndpoint_Audit.json) |
+| [**Azure Machine Learning workspaces should be encrypted with a customer-managed key**](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fba769a63-b8cc-4b2d-abf6-ac33c7204be8) | **Manage encryption at rest of Azure Machine Learning workspace data with customer-managed keys. By default, customer data is encrypted with service-managed keys, but customer-managed keys are commonly required to meet regulatory compliance standards. Customer-managed keys enable the data to be encrypted with an Azure Key Vault key created and owned by you. You have full control and responsibility for the key lifecycle, including rotation and management. Learn more at ** [**https://aka.ms/azureml-workspaces-cmk**](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-create-workspace-template#deploy-an-encrypted-workspace%22) **.** | **Audit, Deny, Disabled** | [**1.0.3**](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Machine%20Learning/Workspace_CMKEnabled_Audit.json) |
 
 Reference:
 <https://docs.microsoft.com/en-us/azure/governance/policy/samples/gov-dod-impact-level-5>
