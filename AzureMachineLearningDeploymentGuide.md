@@ -1172,13 +1172,10 @@ Azure Machine Learning requires both inbound and outbound access to the public i
 | Outbound | 80, 443 | AzureActiveDirectory | Authentication using Azure AD. |
 | Outbound | 443, 8787, 18881 | AzureMachineLearning | Using Azure Machine Learning services. |
 | Outbound | 443 | AzureResourceManager | Creation of Azure resources with Azure Machine Learning. |
-| Outbound | 443, 445 (\*) | Storage.region | Access data stored in the Azure Storage Account for compute cluster and compute instance.
- (\*) 445 is only required if you have a firewall between your virtual network for Azure ML and a private endpoint for your storage accounts. |
-| Outbound | 443 | AzureFrontDoor.FrontEnd
- \* Not needed in Azure China. | Global entry point for [Azure Machine Learning studio](https://ml.azure.com/). Store images and environments for AutoML. |
+| Outbound | 443, 445 (\*) | Storage.region | Access data stored in the Azure Storage Account for compute cluster and compute instance. <br />(\*) 445 is only required if you have a firewall between your virtual network for Azure ML and a private endpoint for your storage accounts. |
+| Outbound | 443 | AzureFrontDoor.FrontEnd <br />\* Not needed in Azure China. | Global entry point for [Azure Machine Learning studio](https://ml.azure.com/). Store images and environments for AutoML. |
 | Outbound | 443 | ContainerRegistry.region | Access docker images provided by Microsoft. |
-| Outbound | 443 | MicrosoftContainerRegistry.region
-**Note**  that this tag has a dependency on the  **AzureFrontDoor.FirstParty**  tag | Access docker images provided by Microsoft. Setup of the Azure Machine Learning router for Azure Kubernetes Service. |
+| Outbound | 443 | MicrosoftContainerRegistry.region <br />**Note**  that this tag has a dependency on the  **AzureFrontDoor.FirstParty**  tag | Access docker images provided by Microsoft. Setup of the Azure Machine Learning router for Azure Kubernetes Service. |
 | Outbound | 443 | Keyvault.region | Access the key vault for the Azure Batch service. Only needed if your workspace was created with the [hbi\_workspace](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) flag enabled. |
 
   **Tip**
@@ -1202,16 +1199,13 @@ You may also need to allow  **outbound**  traffic to Visual Studio Code and non-
 
 | **Host name** | **Purpose** |
 | --- | --- |
-| **anaconda.com**
-**\*.anaconda.com** | Used to install default packages. |
+| **anaconda.com** <br />**\*.anaconda.com** | Used to install default packages. |
 | **\*.anaconda.org** | Used to get repo data. |
 | **pypi.org** | Used to list dependencies from the default index, if any, and the index is not overwritten by user settings. If the index is overwritten, you must also allow  **\*.pythonhosted.org**. |
 | **cloud.r-project.org** | Used when installing CRAN packages for R development. |
 | **\*pytorch.org** | Used by some examples based on PyTorch. |
 | **\*.tensorflow.org** | Used by some examples based on Tensorflow. |
-| **update.code.visualstudio.com**
-
-**\*.vo.msecnd.net** | Used to retrieve VS Code server bits, which are installed on the compute instance through a setup script. |
+| **update.code.visualstudio.com** <br />**\*.vo.msecnd.net** | Used to retrieve VS Code server bits, which are installed on the compute instance through a setup script. |
 | **raw.githubusercontent.com/microsoft/vscode-tools-for-ai/master/azureml\_remote\_websocket\_server/\*** | Used to retrieve websocket server bits, which are installed on the compute instance. The websocket server is used to transmit requests from Visual Studio Code client (desktop application) to Visual Studio Code server running on the compute instance. |
 
 When using Azure Kubernetes Service (AKS) with Azure Machine Learning, allow the following traffic to the AKS VNet:
@@ -1272,11 +1266,9 @@ For information on configuring UDR, see [Route network traffic with a routing ta
 | AzureMachineLearning | TCP | 443, 8787, 18881 |
 | AzureResourceManager | TCP | 443 |
 | Storage.region | TCP | 443 |
-| AzureFrontDoor.FrontEnd
- \* Not needed in Azure China. | TCP | 443 |
+| AzureFrontDoor.FrontEnd <br />\* Not needed in Azure China. | TCP | 443 |
 | AzureContainerRegistry.region | TCP | 443 |
-| MicrosoftContainerRegistry.region
-**Note**  that this tag has a dependency on the  **AzureFrontDoor.FirstParty**  tag | TCP | 443 |
+| MicrosoftContainerRegistry.region <br />**Note**  that this tag has a dependency on the  **AzureFrontDoor.FirstParty**  tag | TCP | 443 |
 | AzureKeyVault.region | TCP | 443 |
 
 1. **Tip**
@@ -1293,16 +1285,13 @@ This is not a complete list of the hosts required for all Python resources on th
 | **Host name** | **Purpose** |
 | --- | --- |
 | **graph.windows.net** | Used by Azure Machine Learning compute instance/cluster. |
-| **anaconda.com**
-**\*.anaconda.com** | Used to install default packages. |
+| **anaconda.com** <br />**\*.anaconda.com** | Used to install default packages. |
 | **\*.anaconda.org** | Used to get repo data. |
 | **pypi.org** | Used to list dependencies from the default index, if any, and the index isn't overwritten by user settings. If the index is overwritten, you must also allow  **\*.pythonhosted.org**. |
 | **cloud.r-project.org** | Used when installing CRAN packages for R development. |
 | **\*pytorch.org** | Used by some examples based on PyTorch. |
 | **\*.tensorflow.org** | Used by some examples based on Tensorflow. |
-| **update.code.visualstudio.com**
-
-**\*.vo.msecnd.net** | Used to retrieve VS Code server bits that are installed on the compute instance through a setup script. |
+| **update.code.visualstudio.com** <br />**\*.vo.msecnd.net** | Used to retrieve VS Code server bits that are installed on the compute instance through a setup script. |
 | **raw.githubusercontent.com/microsoft/vscode-tools-for-ai/master/azureml\_remote\_websocket\_server/\*** | Used to retrieve websocket server bits that are installed on the compute instance. The websocket server is used to transmit requests from Visual Studio Code client (desktop application) to Visual Studio Code server running on the compute instance. |
 | **dc.applicationinsights.azure.com** | Used to collect metrics and diagnostics information when working with Microsoft support. |
 | **dc.applicationinsights.microsoft.com** | Used to collect metrics and diagnostics information when working with Microsoft support. |
@@ -1320,18 +1309,12 @@ For more information on configuring application rules, see [Deploy and configure
 
 | **Outbound Endpoint** | **Port** | **Description** | **Training** | **Inference** |
 | --- | --- | --- | --- | --- |
-| **\*.kusto.windows.net**
-**\*.table.core.windows.net**
-**\*.queue.core.windows.net** | https:443 | Required to upload system logs to Kusto. | ✓ | ✓ |
+| **\*.kusto.windows.net** <br />**\*.table.core.windows.net** <br />**\*.queue.core.windows.net** | https:443 | Required to upload system logs to Kusto. | ✓ | ✓ |
 | **\*.azurecr.io** | https:443 | Azure container registry, required to pull docker images used for machine learning workloads. | ✓ | ✓ |
 | **\*.blob.core.windows.net** | https:443 | Azure blob storage, required to fetch machine learning project scripts,data or models, and upload job logs/outputs. | ✓ | ✓ |
-| **\*.workspace.\<region\>.api.azureml.ms**
-**\<region\>.experiments.azureml.net**
-**\<region\>.api.azureml.ms** | https:443 | Azure Machine Learning service API. | ✓ | ✓ |
+| **\*.workspace.\<region\>.api.azureml.ms** <br />**\<region\>.experiments.azureml.net** <br />**\<region\>.api.azureml.ms** | https:443 | Azure Machine Learning service API. | ✓ | ✓ |
 | **pypi.org** | https:443 | Python package index, to install pip packages used for training job environment initialization. | ✓ | N/A |
-| **archive.ubuntu.com**
-**security.ubuntu.com**
-**ppa.launchpad.net** | http:80 | Required to download the necessary security patches. | ✓ | N/A |
+| **archive.ubuntu.com** <br />**security.ubuntu.com** <br />**ppa.launchpad.net** | http:80 | Required to download the necessary security patches. | ✓ | N/A |
 
 **Note**
 
@@ -1399,8 +1382,7 @@ In the following table, replace \<storage\> with the name of the default storage
 
 | **Required for** | **Hosts** | **Protocol** | **Ports** |
 | --- | --- | --- | --- |
-| Microsoft Container Registry | mcr.microsoft.com
- \*.data.mcr.microsoft.com | TCP | 443 |
+| Microsoft Container Registry | mcr.microsoft.com <br /> \*.data.mcr.microsoft.com | TCP | 443 |
 | Azure Machine Learning pre-built images | viennaglobal.azurecr.io | TCP | 443 |
 
   **Tip**
