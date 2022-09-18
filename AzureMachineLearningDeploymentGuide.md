@@ -14,32 +14,24 @@
 
 # Table of Contents 
 
-[Azure Machine Learning in IL5
-[1](#azure-machine-learning-in-il5)](#azure-machine-learning-in-il5)
+[Azure Machine Learning in IL5](#azure-machine-learning-in-il5)
 
-[Overview [1](#overview)](#overview)
+[Overview](#overview)
 
-[Step A. Create Virtual Network
-[2](#step-a.-create-virtual-network)](#step-a.-create-virtual-network)
+[Step A. Create Virtual Network](#step-a-create-virtual-network)
 
-[Step B. Create Azure Key Vault with Customer-Managed Keys
-[11](#step-b.-create-azure-key-vault-with-customer-managed-keys)](#step-b.-create-azure-key-vault-with-customer-managed-keys)
+[Step B. Create Azure Key Vault with Customer-Managed Keys](#step-b-create-azure-key-vault-with-customer-managed-keys)
 
-[Step C. Secure AML Workspace
-[28](#step-c.-secure-aml-workspace)](#step-c.-secure-aml-workspace)
+[Step C. Secure AML Workspace](#step-c-secure-aml-workspace)
 
-[Step D: Configure Firewall and Configure Inbound and Outbound Traffic
-[53](#step-d-configure-firewall-and-configure-inbound-and-outbound-traffic)](#step-d-configure-firewall-and-configure-inbound-and-outbound-traffic)
+[Step D: Configure Firewall and Configure Inbound and Outbound Traffic](#step-d-configure-firewall-and-configure-inbound-and-outbound-traffic)
 
 [Step E: Secure training resources: beyond the internal compute instance
-and compute clusters, make sure all computes are secure
-[64](#step-e-secure-training-resources-beyond-the-internal-compute-instance-and-compute-clusters-make-sure-all-computes-are-secure)](#step-e-secure-training-resources-beyond-the-internal-compute-instance-and-compute-clusters-make-sure-all-computes-are-secure)
+and compute clusters, make sure all computes are secure](#step-e-secure-training-resources-beyond-the-internal-compute-instance-and-compute-clusters-make-sure-all-computes-are-secure)
 
-[Step F: Use Azure Machine Learning studio in an Azure virtual network
-[66](#step-f-use-azure-machine-learning-studio-in-an-azure-virtual-network)](#step-f-use-azure-machine-learning-studio-in-an-azure-virtual-network)
+[Step F: Use Azure Machine Learning studio in an Azure virtual network](#step-f-use-azure-machine-learning-studio-in-an-azure-virtual-network)
 
-[Step G: Final Check with IL5 Standards
-[71](#step-g-final-check-with-il5-standards)](#step-g-final-check-with-il5-standards)
+[Step G: Final Check with IL5 Standards](#step-g-final-check-with-il5-standards)
 
 ## Step A. Create Virtual Network
 
