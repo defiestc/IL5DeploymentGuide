@@ -1151,697 +1151,282 @@ time, and then select **Save**.
 
 **Well-known ports**
 
-The following are well-known ports used by services listed in this
-article. If a port range is used in this article and isn\'t listed in
-this section, it\'s specific to the service and may not have published
-information on what it\'s used for:
+The following are well-known ports used by services listed in this article. If a port range is used in this article and isn't listed in this section, it's specific to the service and may not have published information on what it's used for:
 
-  ---------------------------------------------------------------------------
-  **Port**   **Description**
-  ---------- ----------------------------------------------------------------
-  80         Unsecured web traffic (HTTP)
-
-  443        Secured web traffic (HTTPS)
-
-  445        SMB traffic used to access file shares in Azure File storage
-
-  8787       Used when connecting to RStudio on a compute instance
-  ---------------------------------------------------------------------------
+| **Port** | **Description** |
+| --- | --- |
+| 80 | Unsecured web traffic (HTTP) |
+| 443 | Secured web traffic (HTTPS) |
+| 445 | SMB traffic used to access file shares in Azure File storage |
+| 8787 | Used when connecting to RStudio on a compute instance |
 
 **Required public internet access**
 
-Azure Machine Learning requires both inbound and outbound access to the
-public internet. The following tables provide an overview of what access
-is required and what it is for. The **protocol** for all items
-is **TCP**. For service tags that end in .region, replace region with
-the Azure region that contains your workspace. For
-example, Storage.westus:
+Azure Machine Learning requires both inbound and outbound access to the public internet. The following tables provide an overview of what access is required and what it is for. The  **protocol**  for all items is  **TCP**. For service tags that end in .region, replace region with the Azure region that contains your workspace. For example, Storage.westus:
 
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  **Direction**   **Ports**     **Service tag**                         **Purpose**
-  --------------- ------------- --------------------------------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  Inbound         29876-29877   BatchNodeManagement                     Create, update, and delete of Azure Machine Learning compute instance and compute cluster. It is not required if you use No Public IP option.
+| **Direction** | **Ports** | **Service tag** | **Purpose** |
+| --- | --- | --- | --- |
+| Inbound | 29876-29877 | BatchNodeManagement | Create, update, and delete of Azure Machine Learning compute instance and compute cluster. It is not required if you use No Public IP option. |
+| Inbound | 44224 | AzureMachineLearning | Create, update, and delete of Azure Machine Learning compute instance. It is not required if you use No Public IP option. |
+| Outbound | 443 | AzureMonitor | Used to log monitoring and metrics to App Insights and Azure Monitor. |
+| Outbound | 80, 443 | AzureActiveDirectory | Authentication using Azure AD. |
+| Outbound | 443, 8787, 18881 | AzureMachineLearning | Using Azure Machine Learning services. |
+| Outbound | 443 | AzureResourceManager | Creation of Azure resources with Azure Machine Learning. |
+| Outbound | 443, 445 (\*) | Storage.region | Access data stored in the Azure Storage Account for compute cluster and compute instance.
+ (\*) 445 is only required if you have a firewall between your virtual network for Azure ML and a private endpoint for your storage accounts. |
+| Outbound | 443 | AzureFrontDoor.FrontEnd
+ \* Not needed in Azure China. | Global entry point for [Azure Machine Learning studio](https://ml.azure.com/). Store images and environments for AutoML. |
+| Outbound | 443 | ContainerRegistry.region | Access docker images provided by Microsoft. |
+| Outbound | 443 | MicrosoftContainerRegistry.region
+**Note**  that this tag has a dependency on the  **AzureFrontDoor.FirstParty**  tag | Access docker images provided by Microsoft. Setup of the Azure Machine Learning router for Azure Kubernetes Service. |
+| Outbound | 443 | Keyvault.region | Access the key vault for the Azure Batch service. Only needed if your workspace was created with the [hbi\_workspace](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) flag enabled. |
 
-  Inbound         44224         AzureMachineLearning                    Create, update, and delete of Azure Machine Learning compute instance. It is not required if you use No Public IP option.
+  **Tip**
 
-  Outbound        443           AzureMonitor                            Used to log monitoring and metrics to App Insights and Azure Monitor.
+If you need the IP addresses instead of service tags, use one of the following options:
 
-  Outbound        80, 443       AzureActiveDirectory                    Authentication using Azure AD.
-
-  Outbound        443, 8787,    AzureMachineLearning                    Using Azure Machine Learning services.
-                  18881                                                 
-
-  Outbound        443           AzureResourceManager                    Creation of Azure resources with Azure Machine Learning.
-
-  Outbound        443, 445 (\*) Storage.region                          Access data stored in the Azure Storage Account for compute cluster and compute instance.\
-                                                                        (\*) 445 is only required if you have a firewall between your virtual network for Azure ML and a private endpoint for your storage accounts.
-
-  Outbound        443           AzureFrontDoor.FrontEnd\                Global entry point for [Azure Machine Learning studio](https://ml.azure.com/). Store images and environments for AutoML.
-                                \* Not needed in Azure China.           
-
-  Outbound        443           ContainerRegistry.region                Access docker images provided by Microsoft.
-
-  Outbound        443           MicrosoftContainerRegistry.region\      Access docker images provided by Microsoft. Setup of the Azure Machine Learning router for Azure Kubernetes Service.
-                                **Note** that this tag has a dependency 
-                                on                                      
-                                the **AzureFrontDoor.FirstParty** tag   
-
-  Outbound        443           Keyvault.region                         Access the key vault for the Azure Batch service. Only needed if your workspace was created with
-                                                                        the [hbi_workspace](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) flag
-                                                                        enabled.
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-** Tip**
-
-If you need the IP addresses instead of service tags, use one of the
-following options:
-
--   Download a list from [**Azure IP Ranges and Service
-    Tags**](https://www.microsoft.com/download/details.aspx?id=56519).
-
--   Use the Azure CLI [**az network
-    list-service-tags**](https://docs.microsoft.com/en-us/cli/azure/network#az-network-list-service-tags) command.
-
--   Use the Azure
-    PowerShell [**Get-AzNetworkServiceTag**](https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkservicetag) command.
+- Download a list from [**Azure IP Ranges and Service Tags**](https://www.microsoft.com/download/details.aspx?id=56519).
+- Use the Azure CLI [**az network list-service-tags**](https://docs.microsoft.com/en-us/cli/azure/network#az-network-list-service-tags) command.
+- Use the Azure PowerShell [**Get-AzNetworkServiceTag**](https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkservicetag) command.
 
 The IP addresses may change periodically.
 
-** Important**
+  **Important**
 
-When using a compute cluster that is configured for **no public IP
-address**, you must allow the following traffic:
+When using a compute cluster that is configured for  **no public IP address** , you must allow the following traffic:
 
--   **Inbound** from source of **VirtualNetwork** and any port source,
-    to destination of **VirtualNetwork**, and destination port
-    of **29876, 29877**.
+- **Inbound**  from source of  **VirtualNetwork**  and any port source, to destination of  **VirtualNetwork** , and destination port of  **29876, 29877**.
+- **Inbound**  from source  **AzureLoadBalancer**  and any port source to destination  **VirtualNetwork**  and port  **44224**  destination.
 
--   **Inbound** from source **AzureLoadBalancer** and any port source to
-    destination **VirtualNetwork** and port **44224** destination.
+You may also need to allow  **outbound**  traffic to Visual Studio Code and non-Microsoft sites for the installation of packages required by your machine learning project. The following table lists commonly used repositories for machine learning:
 
-You may also need to allow **outbound** traffic to Visual Studio Code
-and non-Microsoft sites for the installation of packages required by
-your machine learning project. The following table lists commonly used
-repositories for machine learning:
+| **Host name** | **Purpose** |
+| --- | --- |
+| **anaconda.com**
+**\*.anaconda.com** | Used to install default packages. |
+| **\*.anaconda.org** | Used to get repo data. |
+| **pypi.org** | Used to list dependencies from the default index, if any, and the index is not overwritten by user settings. If the index is overwritten, you must also allow  **\*.pythonhosted.org**. |
+| **cloud.r-project.org** | Used when installing CRAN packages for R development. |
+| **\*pytorch.org** | Used by some examples based on PyTorch. |
+| **\*.tensorflow.org** | Used by some examples based on Tensorflow. |
+| **update.code.visualstudio.com**
 
-  -----------------------------------------------------------------------------------------------------------------------------------------------
-  **Host name**                                                                                           **Purpose**
-  ------------------------------------------------------------------------------------------------------- ---------------------------------------
-  **anaconda.com**\                                                                                       Used to install default packages.
-  **\*.anaconda.com**                                                                                     
+**\*.vo.msecnd.net** | Used to retrieve VS Code server bits, which are installed on the compute instance through a setup script. |
+| **raw.githubusercontent.com/microsoft/vscode-tools-for-ai/master/azureml\_remote\_websocket\_server/\*** | Used to retrieve websocket server bits, which are installed on the compute instance. The websocket server is used to transmit requests from Visual Studio Code client (desktop application) to Visual Studio Code server running on the compute instance. |
 
-  **\*.anaconda.org**                                                                                     Used to get repo data.
+When using Azure Kubernetes Service (AKS) with Azure Machine Learning, allow the following traffic to the AKS VNet:
 
-  **pypi.org**                                                                                            Used to list dependencies from the
-                                                                                                          default index, if any, and the index is
-                                                                                                          not overwritten by user settings. If
-                                                                                                          the index is overwritten, you must also
-                                                                                                          allow **\*.pythonhosted.org**.
-
-  **cloud.r-project.org**                                                                                 Used when installing CRAN packages for
-                                                                                                          R development.
-
-  **\*pytorch.org**                                                                                       Used by some examples based on PyTorch.
-
-  **\*.tensorflow.org**                                                                                   Used by some examples based on
-                                                                                                          Tensorflow.
-
-  **update.code.visualstudio.com**\                                                                       Used to retrieve VS Code server bits,
-  \                                                                                                       which are installed on the compute
-  **\*.vo.msecnd.net**                                                                                    instance through a setup script.
-
-  **raw.githubusercontent.com/microsoft/vscode-tools-for-ai/master/azureml_remote_websocket_server/\***   Used to retrieve websocket server bits,
-                                                                                                          which are installed on the compute
-                                                                                                          instance. The websocket server is used
-                                                                                                          to transmit requests from Visual Studio
-                                                                                                          Code client (desktop application) to
-                                                                                                          Visual Studio Code server running on
-                                                                                                          the compute instance.
-  -----------------------------------------------------------------------------------------------------------------------------------------------
-
-When using Azure Kubernetes Service (AKS) with Azure Machine Learning,
-allow the following traffic to the AKS VNet:
-
--   General inbound/outbound requirements for AKS as described in
-    the [Restrict egress traffic in Azure Kubernetes
-    Service](https://docs.microsoft.com/en-us/azure/aks/limit-egress-traffic) article.
-
--   **Outbound** to mcr.microsoft.com.
-
--   When deploying a model to an AKS cluster, use the guidance in
-    the [Deploy ML models to Azure Kubernetes
-    Service](https://docs.microsoft.com/en-us/azure/machine-learning/v1/how-to-deploy-azure-kubernetes-service#connectivity) article.
+- General inbound/outbound requirements for AKS as described in the [Restrict egress traffic in Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/limit-egress-traffic) article.
+- **Outbound**  to mcr.microsoft.com.
+- When deploying a model to an AKS cluster, use the guidance in the [Deploy ML models to Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/machine-learning/v1/how-to-deploy-azure-kubernetes-service#connectivity) article.
 
 **Azure Firewall**
 
-** Important**
+  **Important**
 
-Azure Firewall provides security *for Azure Virtual Network resources*.
-Some Azure Services, such as Azure Storage Accounts, have their own
-firewall settings that *apply to the public endpoint for that specific
-service instance*. The information in this document is specific to Azure
-Firewall.
+Azure Firewall provides security _for Azure Virtual Network resources_. Some Azure Services, such as Azure Storage Accounts, have their own firewall settings that _apply to the public endpoint for that specific service instance_. The information in this document is specific to Azure Firewall.
 
-For information on service instance firewall settings, see [**Use studio
-in a virtual
-network**](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-enable-studio-virtual-network#firewall-settings).
+For information on service instance firewall settings, see [**Use studio in a virtual network**](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-enable-studio-virtual-network#firewall-settings).
 
--   For **inbound** traffic to Azure Machine Learning compute cluster
-    and compute instance, use [user-defined routes
-    (UDRs)](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview) to
-    skip the firewall.
+- For  **inbound**  traffic to Azure Machine Learning compute cluster and compute instance, use [user-defined routes (UDRs)](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview) to skip the firewall.
+- For  **outbound**  traffic, create  **network**  and  **application**  rules.
 
--   For **outbound** traffic,
-    create **network** and **application** rules.
-
-These rule collections are described in more detail in [What are some
-Azure Firewall
-concepts](https://docs.microsoft.com/en-us/azure/firewall/firewall-faq#what-are-some-azure-firewall-concepts).
+These rule collections are described in more detail in [What are some Azure Firewall concepts](https://docs.microsoft.com/en-us/azure/firewall/firewall-faq#what-are-some-azure-firewall-concepts).
 
 **Inbound configuration**
 
-When using Azure Machine Learning **compute instance** (with a public
-IP) or **compute cluster**, allow inbound traffic from Azure Batch
-management and Azure Machine Learning services. Compute instance with no
-public IP (preview) does not require this inbound communication. A
-Network Security Group allowing this traffic is dynamically created for
-you, however you may need to also create user-defined routes (UDR) if
-you have a firewall. When creating a UDR for this traffic, you can use
-either **IP Addresses** or **service tags** to route the traffic.
+When using Azure Machine Learning  **compute instance**  (with a public IP) or  **compute cluster** , allow inbound traffic from Azure Batch management and Azure Machine Learning services. Compute instance with no public IP (preview) does not require this inbound communication. A Network Security Group allowing this traffic is dynamically created for you, however you may need to also create user-defined routes (UDR) if you have a firewall. When creating a UDR for this traffic, you can use either  **IP Addresses**  or  **service tags**  to route the traffic.
 
-** Important**
+  **Important**
 
-Using service tags with user-defined routes is now GA. For more
-information, see [**Virtual Network
-routing**](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview#service-tags-for-user-defined-routes).
+Using service tags with user-defined routes is now GA. For more information, see [**Virtual Network routing**](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview#service-tags-for-user-defined-routes).
 
-** Tip**
+  **Tip**
 
-While a compute instance without a public IP (a preview feature) does
-not need a UDR for this inbound traffic, you will still need these UDRs
-if you also use a compute cluster or a compute instance with a public
-IP.
+While a compute instance without a public IP (a preview feature) does not need a UDR for this inbound traffic, you will still need these UDRs if you also use a compute cluster or a compute instance with a public IP.
 
--   [IP Address
-    routes](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-access-azureml-behind-firewall?tabs=ipaddress%2Cgov#tabpanel_1_ipaddress)
+- [IP Address routes](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-access-azureml-behind-firewall?tabs=ipaddress%2Cgov#tabpanel_1_ipaddress)
+- [Service tag routes](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-access-azureml-behind-firewall?tabs=ipaddress%2Cgov#tabpanel_1_servicetag)
 
--   [Service tag
-    routes](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-access-azureml-behind-firewall?tabs=ipaddress%2Cgov#tabpanel_1_servicetag)
+For the Azure Machine Learning service, you must add the IP address of both the  **primary**  and  **secondary**  regions. To find the secondary region, see the [Cross-region replication in Azure](https://docs.microsoft.com/en-us/azure/availability-zones/cross-region-replication-azure). For example, if your Azure Machine Learning service is in East US 2, the secondary region is Central US.
 
-For the Azure Machine Learning service, you must add the IP address of
-both the **primary** and **secondary** regions. To find the secondary
-region, see the [Cross-region replication in
-Azure](https://docs.microsoft.com/en-us/azure/availability-zones/cross-region-replication-azure).
-For example, if your Azure Machine Learning service is in East US 2, the
-secondary region is Central US.
+To get a list of IP addresses of the Batch service and Azure Machine Learning service, download the [Azure IP Ranges and Service Tags](https://www.microsoft.com/download/details.aspx?id=56519) and search the file for BatchNodeManagement.\<region\> and AzureMachineLearning.\<region\>, where \<region\> is your Azure region.
 
-To get a list of IP addresses of the Batch service and Azure Machine
-Learning service, download the [Azure IP Ranges and Service
-Tags](https://www.microsoft.com/download/details.aspx?id=56519) and
-search the file
-for BatchNodeManagement.\<region\> and AzureMachineLearning.\<region\>,
-where \<region\> is your Azure region.
-
-** Important**
+  **Important**
 
 The IP addresses may change over time.
 
-When creating the UDR, set the **Next hop type** to **Internet**. This
-means the inbound communication from Azure skips your firewall to access
-the load balancers with public IPs of Compute Instance and Compute
-Cluster. UDR is required because Compute Instance and Compute Cluster
-will get random public IPs at creation, and you cannot know the public
-IPs before creation to register them on your firewall to allow the
-inbound from Azure to specific IPs for Compute Instance and Compute
-Cluster. The following image shows an example IP address based UDR in
-the Azure portal:
+When creating the UDR, set the  **Next hop type**  to  **Internet**. This means the inbound communication from Azure skips your firewall to access the load balancers with public IPs of Compute Instance and Compute Cluster. UDR is required because Compute Instance and Compute Cluster will get random public IPs at creation, and you cannot know the public IPs before creation to register them on your firewall to allow the inbound from Azure to specific IPs for Compute Instance and Compute Cluster. The following image shows an example IP address based UDR in the Azure portal:
 
-![Image of a user-defined route
-configuration](./media/image57.png)
+![](RackMultipart20220918-1-c8q07x_html_372a031470321684.png)
 
-For information on configuring UDR, see [Route network traffic with a
-routing
-table](https://docs.microsoft.com/en-us/azure/virtual-network/tutorial-create-route-table-portal).
+For information on configuring UDR, see [Route network traffic with a routing table](https://docs.microsoft.com/en-us/azure/virtual-network/tutorial-create-route-table-portal).
 
 **Outbound configuration**
 
-1.  Add **Network rules**, allowing traffic **to** and **from** the
-    following service tags:
+1. Add  **Network rules** , allowing traffic  **to**  and  **from**  the following service tags:
 
-  --------------------------------------------------------------------------------
-  **Service tag**                                      **Protocol**   **Port**
-  ---------------------------------------------------- -------------- ------------
-  AzureActiveDirectory                                 TCP            80, 443
+| **Service tag** | **Protocol** | **Port** |
+| --- | --- | --- |
+| AzureActiveDirectory | TCP | 80, 443 |
+| AzureMachineLearning | TCP | 443, 8787, 18881 |
+| AzureResourceManager | TCP | 443 |
+| Storage.region | TCP | 443 |
+| AzureFrontDoor.FrontEnd
+ \* Not needed in Azure China. | TCP | 443 |
+| AzureContainerRegistry.region | TCP | 443 |
+| MicrosoftContainerRegistry.region
+**Note**  that this tag has a dependency on the  **AzureFrontDoor.FirstParty**  tag | TCP | 443 |
+| AzureKeyVault.region | TCP | 443 |
 
-  AzureMachineLearning                                 TCP            443, 8787,
-                                                                      18881
+1. **Tip**
+  - region is only needed for custom Docker images. Including small modifications (such as additional packages) to base images provided by Microsoft.
+  - region is only needed if you plan on using the _default Docker images provided by Microsoft_, and _enabling user-managed dependencies_.
+  - region is only needed if your workspace was created with the [**hbi\_workspace**](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) flag enabled.
+  - For entries that contain region, replace with the Azure region that you're using. For example, AzureContainerRegistry.westus.
+2. Add  **Application rules**  for the following hosts:
 
-  AzureResourceManager                                 TCP            443
+  **Note**
 
-  Storage.region                                       TCP            443
+This is not a complete list of the hosts required for all Python resources on the internet, only the most commonly used. For example, if you need access to a GitHub repository or other host, you must identify and add the required hosts for that scenario.
 
-  AzureFrontDoor.FrontEnd\                             TCP            443
-  \* Not needed in Azure China.                                       
+| **Host name** | **Purpose** |
+| --- | --- |
+| **graph.windows.net** | Used by Azure Machine Learning compute instance/cluster. |
+| **anaconda.com**
+**\*.anaconda.com** | Used to install default packages. |
+| **\*.anaconda.org** | Used to get repo data. |
+| **pypi.org** | Used to list dependencies from the default index, if any, and the index isn't overwritten by user settings. If the index is overwritten, you must also allow  **\*.pythonhosted.org**. |
+| **cloud.r-project.org** | Used when installing CRAN packages for R development. |
+| **\*pytorch.org** | Used by some examples based on PyTorch. |
+| **\*.tensorflow.org** | Used by some examples based on Tensorflow. |
+| **update.code.visualstudio.com**
 
-  AzureContainerRegistry.region                        TCP            443
+**\*.vo.msecnd.net** | Used to retrieve VS Code server bits that are installed on the compute instance through a setup script. |
+| **raw.githubusercontent.com/microsoft/vscode-tools-for-ai/master/azureml\_remote\_websocket\_server/\*** | Used to retrieve websocket server bits that are installed on the compute instance. The websocket server is used to transmit requests from Visual Studio Code client (desktop application) to Visual Studio Code server running on the compute instance. |
+| **dc.applicationinsights.azure.com** | Used to collect metrics and diagnostics information when working with Microsoft support. |
+| **dc.applicationinsights.microsoft.com** | Used to collect metrics and diagnostics information when working with Microsoft support. |
+| **dc.services.visualstudio.com** | Used to collect metrics and diagnostics information when working with Microsoft support. |
 
-  MicrosoftContainerRegistry.region\                   TCP            443
-  **Note** that this tag has a dependency on                          
-  the **AzureFrontDoor.FirstParty** tag                               
+For  **Protocol:Port** , select use  **http, https**.
 
-  AzureKeyVault.region                                 TCP            443
-  --------------------------------------------------------------------------------
+For more information on configuring application rules, see [Deploy and configure Azure Firewall](https://docs.microsoft.com/en-us/azure/firewall/tutorial-firewall-deploy-portal#configure-an-application-rule).
 
-2.  ** Tip**
-
-    -   AzureContainerRegistry.region is only needed for custom Docker
-        images. Including small modifications (such as additional
-        packages) to base images provided by Microsoft.
-
-    -   MicrosoftContainerRegistry.region is only needed if you plan on
-        using the *default Docker images provided by Microsoft*,
-        and *enabling user-managed dependencies*.
-
-    -   AzureKeyVault.region is only needed if your workspace was
-        created with
-        the [**hbi_workspace**](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) flag
-        enabled.
-
-    -   For entries that contain region, replace with the Azure region
-        that you\'re using. For example, AzureContainerRegistry.westus.
-
-```{=html}
-<!-- -->
-```
-1.  Add **Application rules** for the following hosts:
-
-** Note**
-
-This is not a complete list of the hosts required for all Python
-resources on the internet, only the most commonly used. For example, if
-you need access to a GitHub repository or other host, you must identify
-and add the required hosts for that scenario.
-
-  ----------------------------------------------------------------------------------------------------------------------------------------------
-  **Host name**                                                                                           **Purpose**
-  ------------------------------------------------------------------------------------------------------- --------------------------------------
-  **graph.windows.net**                                                                                   Used by Azure Machine Learning compute
-                                                                                                          instance/cluster.
-
-  **anaconda.com**\                                                                                       Used to install default packages.
-  **\*.anaconda.com**                                                                                     
-
-  **\*.anaconda.org**                                                                                     Used to get repo data.
-
-  **pypi.org**                                                                                            Used to list dependencies from the
-                                                                                                          default index, if any, and the index
-                                                                                                          isn\'t overwritten by user settings.
-                                                                                                          If the index is overwritten, you must
-                                                                                                          also allow **\*.pythonhosted.org**.
-
-  **cloud.r-project.org**                                                                                 Used when installing CRAN packages for
-                                                                                                          R development.
-
-  **\*pytorch.org**                                                                                       Used by some examples based on
-                                                                                                          PyTorch.
-
-  **\*.tensorflow.org**                                                                                   Used by some examples based on
-                                                                                                          Tensorflow.
-
-  **update.code.visualstudio.com**\                                                                       Used to retrieve VS Code server bits
-  \                                                                                                       that are installed on the compute
-  **\*.vo.msecnd.net**                                                                                    instance through a setup script.
-
-  **raw.githubusercontent.com/microsoft/vscode-tools-for-ai/master/azureml_remote_websocket_server/\***   Used to retrieve websocket server bits
-                                                                                                          that are installed on the compute
-                                                                                                          instance. The websocket server is used
-                                                                                                          to transmit requests from Visual
-                                                                                                          Studio Code client (desktop
-                                                                                                          application) to Visual Studio Code
-                                                                                                          server running on the compute
-                                                                                                          instance.
-
-  **dc.applicationinsights.azure.com**                                                                    Used to collect metrics and
-                                                                                                          diagnostics information when working
-                                                                                                          with Microsoft support.
-
-  **dc.applicationinsights.microsoft.com**                                                                Used to collect metrics and
-                                                                                                          diagnostics information when working
-                                                                                                          with Microsoft support.
-
-  **dc.services.visualstudio.com**                                                                        Used to collect metrics and
-                                                                                                          diagnostics information when working
-                                                                                                          with Microsoft support.
-  ----------------------------------------------------------------------------------------------------------------------------------------------
-
-For **Protocol:Port**, select use **http, https**.
-
-For more information on configuring application rules, see [Deploy and
-configure Azure
-Firewall](https://docs.microsoft.com/en-us/azure/firewall/tutorial-firewall-deploy-portal#configure-an-application-rule).
-
-2.  To restrict outbound traffic for models deployed to Azure Kubernetes
-    Service (AKS), see the [Restrict egress traffic in Azure Kubernetes
-    Service](https://docs.microsoft.com/en-us/azure/aks/limit-egress-traffic) and [Deploy
-    ML models to Azure Kubernetes
-    Service](https://docs.microsoft.com/en-us/azure/machine-learning/v1/how-to-deploy-azure-kubernetes-service#connectivity) articles.
+1. To restrict outbound traffic for models deployed to Azure Kubernetes Service (AKS), see the [Restrict egress traffic in Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/limit-egress-traffic) and [Deploy ML models to Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/machine-learning/v1/how-to-deploy-azure-kubernetes-service#connectivity) articles.
 
 **Kubernetes Compute**
 
-[Kubernetes
-Cluster](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-attach-kubernetes-anywhere) running
-behind an outbound proxy server or firewall needs extra network
-configuration. Configure the [Azure Arc network
-requirements](https://docs.microsoft.com/en-us/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements) needed
-by Azure Arc agents. The following outbound URLs are also required for
-Azure Machine Learning,
+[Kubernetes Cluster](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-attach-kubernetes-anywhere) running behind an outbound proxy server or firewall needs extra network configuration. Configure the [Azure Arc network requirements](https://docs.microsoft.com/en-us/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements) needed by Azure Arc agents. The following outbound URLs are also required for Azure Machine Learning,
 
-  ------------------------------------------------------------------------------------------------------------------------
-  **Outbound Endpoint**                         **Port**    **Description**                 **Training**   **Inference**
-  --------------------------------------------- ----------- ------------------------------- -------------- ---------------
-  **\*.kusto.windows.net**\                     https:443   Required to upload system logs  **✓**          **✓**
-  **\*.table.core.windows.net**\                            to Kusto.                                      
-  **\*.queue.core.windows.net**                                                                            
+| **Outbound Endpoint** | **Port** | **Description** | **Training** | **Inference** |
+| --- | --- | --- | --- | --- |
+| **\*.kusto.windows.net**
+**\*.table.core.windows.net**
+**\*.queue.core.windows.net** | https:443 | Required to upload system logs to Kusto. | ✓ | ✓ |
+| **\*.azurecr.io** | https:443 | Azure container registry, required to pull docker images used for machine learning workloads. | ✓ | ✓ |
+| **\*.blob.core.windows.net** | https:443 | Azure blob storage, required to fetch machine learning project scripts,data or models, and upload job logs/outputs. | ✓ | ✓ |
+| **\*.workspace.\<region\>.api.azureml.ms**
+**\<region\>.experiments.azureml.net**
+**\<region\>.api.azureml.ms** | https:443 | Azure Machine Learning service API. | ✓ | ✓ |
+| **pypi.org** | https:443 | Python package index, to install pip packages used for training job environment initialization. | ✓ | N/A |
+| **archive.ubuntu.com**
+**security.ubuntu.com**
+**ppa.launchpad.net** | http:80 | Required to download the necessary security patches. | ✓ | N/A |
 
-  **\*.azurecr.io**                             https:443   Azure container registry,       **✓**          **✓**
-                                                            required to pull docker images                 
-                                                            used for machine learning                      
-                                                            workloads.                                     
+**Note**
 
-  **\*.blob.core.windows.net**                  https:443   Azure blob storage, required to **✓**          **✓**
-                                                            fetch machine learning project                 
-                                                            scripts,data or models, and                    
-                                                            upload job logs/outputs.                       
-
-  **\*.workspace.\<region\>.api.azureml.ms**\   https:443   Azure Machine Learning service  **✓**          **✓**
-  **\<region\>.experiments.azureml.net**\                   API.                                           
-  **\<region\>.api.azureml.ms**                                                                            
-
-  **pypi.org**                                  https:443   Python package index, to        **✓**          N/A
-                                                            install pip packages used for                  
-                                                            training job environment                       
-                                                            initialization.                                
-
-  **archive.ubuntu.com**\                       http:80     Required to download the        **✓**          N/A
-  **security.ubuntu.com**\                                  necessary security patches.                    
-  **ppa.launchpad.net**                                                                                    
-  ------------------------------------------------------------------------------------------------------------------------
-
-** Note**
-
-\<region\> is the lowcase full spelling of Azure Region, for example,
-eastus, southeastasia.
-
-**Required public internet access**
-
-Azure Machine Learning requires both inbound and outbound access to the
-public internet. The following tables provide an overview of what access
-is required and what it is for. The **protocol** for all items
-is **TCP**. For service tags that end in .region, replace region with
-the Azure region that contains your workspace. For
-example, Storage.westus:
-
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  **Direction**   **Ports**     **Service tag**                         **Purpose**
-  --------------- ------------- --------------------------------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  Inbound         29876-29877   BatchNodeManagement                     Create, update, and delete of Azure Machine Learning compute instance and compute cluster. It is not required if you use No Public IP option.
-
-  Inbound         44224         AzureMachineLearning                    Create, update, and delete of Azure Machine Learning compute instance. It is not required if you use No Public IP option.
-
-  Outbound        443           AzureMonitor                            Used to log monitoring and metrics to App Insights and Azure Monitor.
-
-  Outbound        80, 443       AzureActiveDirectory                    Authentication using Azure AD.
-
-  Outbound        443, 8787,    AzureMachineLearning                    Using Azure Machine Learning services.
-                  18881                                                 
-
-  Outbound        443           AzureResourceManager                    Creation of Azure resources with Azure Machine Learning.
-
-  Outbound        443, 445 (\*) Storage.region                          Access data stored in the Azure Storage Account for compute cluster and compute instance.\
-                                                                        (\*) 445 is only required if you have a firewall between your virtual network for Azure ML and a private endpoint for your storage accounts.
-
-  Outbound        443           AzureFrontDoor.FrontEnd\                Global entry point for [Azure Machine Learning studio](https://ml.azure.com/). Store images and environments for AutoML.
-                                \* Not needed in Azure China.           
-
-  Outbound        443           ContainerRegistry.region                Access docker images provided by Microsoft.
-
-  Outbound        443           MicrosoftContainerRegistry.region\      Access docker images provided by Microsoft. Setup of the Azure Machine Learning router for Azure Kubernetes Service.
-                                **Note** that this tag has a dependency 
-                                on                                      
-                                the **AzureFrontDoor.FirstParty** tag   
-
-  Outbound        443           Keyvault.region                         Access the key vault for the Azure Batch service. Only needed if your workspace was created with
-                                                                        the [hbi_workspace](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) flag
-                                                                        enabled.
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-** Tip**
-
-If you need the IP addresses instead of service tags, use one of the
-following options:
-
--   Download a list from [**Azure IP Ranges and Service
-    Tags**](https://www.microsoft.com/download/details.aspx?id=56519).
-
--   Use the Azure CLI [**az network
-    list-service-tags**](https://docs.microsoft.com/en-us/cli/azure/network#az-network-list-service-tags) command.
-
--   Use the Azure
-    PowerShell [**Get-AzNetworkServiceTag**](https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkservicetag) command.
-
-The IP addresses may change periodically.
-
-** Important**
-
-When using a compute cluster that is configured for **no public IP
-address**, you must allow the following traffic:
-
--   **Inbound** from source of **VirtualNetwork** and any port source,
-    to destination of **VirtualNetwork**, and destination port
-    of **29876, 29877**.
-
--   **Inbound** from source **AzureLoadBalancer** and any port source to
-    destination **VirtualNetwork** and port **44224** destination.
-
-You may also need to allow **outbound** traffic to Visual Studio Code
-and non-Microsoft sites for the installation of packages required by
-your machine learning project. The following table lists commonly used
-repositories for machine learning:
-
-  -----------------------------------------------------------------------------------------------------------------------------------------------
-  **Host name**                                                                                           **Purpose**
-  ------------------------------------------------------------------------------------------------------- ---------------------------------------
-  **anaconda.com**\                                                                                       Used to install default packages.
-  **\*.anaconda.com**                                                                                     
-
-  **\*.anaconda.org**                                                                                     Used to get repo data.
-
-  **pypi.org**                                                                                            Used to list dependencies from the
-                                                                                                          default index, if any, and the index is
-                                                                                                          not overwritten by user settings. If
-                                                                                                          the index is overwritten, you must also
-                                                                                                          allow **\*.pythonhosted.org**.
-
-  **cloud.r-project.org**                                                                                 Used when installing CRAN packages for
-                                                                                                          R development.
-
-  **\*pytorch.org**                                                                                       Used by some examples based on PyTorch.
-
-  **\*.tensorflow.org**                                                                                   Used by some examples based on
-                                                                                                          Tensorflow.
-
-  **update.code.visualstudio.com**\                                                                       Used to retrieve VS Code server bits,
-  \                                                                                                       which are installed on the compute
-  **\*.vo.msecnd.net**                                                                                    instance through a setup script.
-
-  **raw.githubusercontent.com/microsoft/vscode-tools-for-ai/master/azureml_remote_websocket_server/\***   Used to retrieve websocket server bits,
-                                                                                                          which are installed on the compute
-                                                                                                          instance. The websocket server is used
-                                                                                                          to transmit requests from Visual Studio
-                                                                                                          Code client (desktop application) to
-                                                                                                          Visual Studio Code server running on
-                                                                                                          the compute instance.
-  -----------------------------------------------------------------------------------------------------------------------------------------------
-
-When using Azure Kubernetes Service (AKS) with Azure Machine Learning,
-allow the following traffic to the AKS VNet:
-
--   General inbound/outbound requirements for AKS as described in
-    the [Restrict egress traffic in Azure Kubernetes
-    Service](https://docs.microsoft.com/en-us/azure/aks/limit-egress-traffic) article.
-
--   **Outbound** to mcr.microsoft.com.
-
--   When deploying a model to an AKS cluster, use the guidance in
-    the [Deploy ML models to Azure Kubernetes
-    Service](https://docs.microsoft.com/en-us/azure/machine-learning/v1/how-to-deploy-azure-kubernetes-service#connectivity) article.
+\<region\> is the lowcase full spelling of Azure Region, for example, eastus, southeastasia.
 
 **Microsoft hosts**
 
-The hosts in the following tables are owned by Microsoft, and provide
-services required for the proper functioning of your workspace. The
-tables list hosts for Azure Government.
+The hosts in the following tables are owned by Microsoft, and provide services required for the proper functioning of your workspace. The tables list hosts for Azure Government.
 
-** Important**
+  **Important**
 
-Azure Machine Learning uses Azure Storage Accounts in your subscription
-and in Microsoft-managed subscriptions. Where applicable, the following
-terms are used to differentiate between them in this section:
+Azure Machine Learning uses Azure Storage Accounts in your subscription and in Microsoft-managed subscriptions. Where applicable, the following terms are used to differentiate between them in this section:
 
--   **Your storage**: The Azure Storage Account(s) in your subscription,
-    which is used to store your data and artifacts such as models,
-    training data, training logs, and Python scripts.\>
-
--   **Microsoft storage**: The Azure Machine Learning compute instance
-    and compute clusters rely on Azure Batch, and must access storage
-    located in a Microsoft subscription. This storage is used only for
-    the management of the compute instances. None of your data is stored
-    here.
+- **Your storage** : The Azure Storage Account(s) in your subscription, which is used to store your data and artifacts such as models, training data, training logs, and Python scripts.\>
+- **Microsoft storage** : The Azure Machine Learning compute instance and compute clusters rely on Azure Batch, and must access storage located in a Microsoft subscription. This storage is used only for the management of the compute instances. None of your data is stored here.
 
 **General Azure hosts**
 
-  ----------------------------------------------------------------------------------
-  **Required for**         **Hosts**                      **Protocol**   **Ports**
-  ------------------------ ------------------------------ -------------- -----------
-  Azure Active Directory   login.microsoftonline.us       TCP            80, 443
-
-  Azure portal             management.azure.us            TCP            443
-
-  Azure Resource Manager   management.usgovcloudapi.net   TCP            443
-  ----------------------------------------------------------------------------------
+| **Required for** | **Hosts** | **Protocol** | **Ports** |
+| --- | --- | --- | --- |
+| Azure Active Directory | login.microsoftonline.us | TCP | 80, 443 |
+| Azure portal | management.azure.us | TCP | 443 |
+| Azure Resource Manager | management.usgovcloudapi.net | TCP | 443 |
 
 **Azure Machine Learning hosts**
 
-** Important**
+  **Important**
 
-In the following table, replace \<storage\> with the name of the default
-storage account for your Azure Machine Learning workspace.
+In the following table, replace \<storage\> with the name of the default storage account for your Azure Machine Learning workspace.
 
-  ----------------------------------------------------------------------------------------------
-  **Required for**          **Hosts**                                 **Protocol**   **Ports**
-  ------------------------- ----------------------------------------- -------------- -----------
-  Azure Machine Learning    ml.azure.us                               TCP            443
-  studio                                                                             
-
-  API                       \*.ml.azure.us                            TCP            443
-
-  Model management          \*.modelmanagement.azureml.us             TCP            443
-
-  Integrated notebook       \*.notebooks.usgovcloudapi.net            TCP            443
-
-  Integrated notebook       \<storage\>.file.core.usgovcloudapi.net   TCP            443, 445
-
-  Integrated notebook       \<storage\>.dfs.core.usgovcloudapi.net    TCP            443
-
-  Integrated notebook       \<storage\>.blob.core.usgovcloudapi.net   TCP            443
-
-  Integrated notebook       graph.microsoft.us                        TCP            443
-
-  Integrated notebook       \*.aznbcontent.net                        TCP            443
-  ----------------------------------------------------------------------------------------------
+| **Required for** | **Hosts** | **Protocol** | **Ports** |
+| --- | --- | --- | --- |
+| Azure Machine Learning studio | ml.azure.us | TCP | 443 |
+| API | \*.ml.azure.us | TCP | 443 |
+| Model management | \*.modelmanagement.azureml.us | TCP | 443 |
+| Integrated notebook | \*.notebooks.usgovcloudapi.net | TCP | 443 |
+| Integrated notebook | \<storage\>.file.core.usgovcloudapi.net | TCP | 443, 445 |
+| Integrated notebook | \<storage\>.dfs.core.usgovcloudapi.net | TCP | 443 |
+| Integrated notebook | \<storage\>.blob.core.usgovcloudapi.net | TCP | 443 |
+| Integrated notebook | graph.microsoft.us | TCP | 443 |
+| Integrated notebook | \*.aznbcontent.net | TCP | 443 |
 
 **Azure Machine Learning compute instance and compute cluster hosts**
 
-** Tip**
+  **Tip**
 
--   The host for **Azure Key Vault** is only needed if your workspace
-    was created with
-    the [**hbi_workspace**](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) flag
-    enabled.
+- The host for  **Azure Key Vault**  is only needed if your workspace was created with the [**hbi\_workspace**](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) flag enabled.
+- Ports 8787 and 18881 for  **compute instance**  are only needed when your Azure Machine workspace has a private endpoint.
+- In the following table, replace \<storage\> with the name of the default storage account for your Azure Machine Learning workspace.
+- Websocket communication must be allowed to the compute instance. If you block websocket traffic, Jupyter notebooks won't work correctly.
 
--   Ports 8787 and 18881 for **compute instance** are only needed when
-    your Azure Machine workspace has a private endpoint.
-
--   In the following table, replace \<storage\> with the name of the
-    default storage account for your Azure Machine Learning workspace.
-
--   Websocket communication must be allowed to the compute instance. If
-    you block websocket traffic, Jupyter notebooks won\'t work
-    correctly.
-
-  -------------------------------------------------------------------------------------------
-  **Required for**     **Hosts**                                 **Protocol**   **Ports**
-  -------------------- ----------------------------------------- -------------- -------------
-  Compute              graph.windows.net                         TCP            443
-  cluster/instance                                                              
-
-  Compute instance     \*.instances.azureml.us                   TCP            443
-
-  Compute instance     \*.instances.azureml.ms                   TCP            443, 8787,
-                                                                                18881
-
-  Microsoft storage    \*.blob.core.usgovcloudapi.net            TCP            443
-  access                                                                        
-
-  Microsoft storage    \*.table.core.usgovcloudapi.net           TCP            443
-  access                                                                        
-
-  Microsoft storage    \*.queue.core.usgovcloudapi.net           TCP            443
-  access                                                                        
-
-  Your storage account \<storage\>.file.core.usgovcloudapi.net   TCP            443, 445
-
-  Your storage account \<storage\>.blob.core.usgovcloudapi.net   TCP            443
-
-  Azure Key Vault      \*.vault.usgovcloudapi.net                TCP            443
-  -------------------------------------------------------------------------------------------
+| **Required for** | **Hosts** | **Protocol** | **Ports** |
+| --- | --- | --- | --- |
+| Compute cluster/instance | graph.windows.net | TCP | 443 |
+| Compute instance | \*.instances.azureml.us | TCP | 443 |
+| Compute instance | \*.instances.azureml.ms | TCP | 443, 8787, 18881 |
+| Microsoft storage access | \*.blob.core.usgovcloudapi.net | TCP | 443 |
+| Microsoft storage access | \*.table.core.usgovcloudapi.net | TCP | 443 |
+| Microsoft storage access | \*.queue.core.usgovcloudapi.net | TCP | 443 |
+| Your storage account | \<storage\>.file.core.usgovcloudapi.net | TCP | 443, 445 |
+| Your storage account | \<storage\>.blob.core.usgovcloudapi.net | TCP | 443 |
+| Azure Key Vault | \*.vault.usgovcloudapi.net | TCP | 443 |
 
 **Docker images maintained by by Azure Machine Learning**
 
-  ------------------------------------------------------------------------------------------
-  **Required for**                    **Hosts**                   **Protocol**   **Ports**
-  ----------------------------------- --------------------------- -------------- -----------
-  Microsoft Container Registry        mcr.microsoft.com\          TCP            443
-                                      \*.data.mcr.microsoft.com                  
+| **Required for** | **Hosts** | **Protocol** | **Ports** |
+| --- | --- | --- | --- |
+| Microsoft Container Registry | mcr.microsoft.com
+ \*.data.mcr.microsoft.com | TCP | 443 |
+| Azure Machine Learning pre-built images | viennaglobal.azurecr.io | TCP | 443 |
 
-  Azure Machine Learning pre-built    viennaglobal.azurecr.io     TCP            443
-  images                                                                         
-  ------------------------------------------------------------------------------------------
+  **Tip**
 
-** Tip**
+- **Azure Container Registry**  is required for any custom Docker image. This includes small modifications (such as additional packages) to base images provided by Microsoft.
+- **Microsoft Container Registry**  is only needed if you plan on using the _default Docker images provided by Microsoft_, and _enabling user-managed dependencies_.
+- If you plan on using federated identity, follow the [**Best practices for securing Active Directory Federation Services**](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs) article.
 
--   **Azure Container Registry** is required for any custom Docker
-    image. This includes small modifications (such as additional
-    packages) to base images provided by Microsoft.
+Also, use the information in the [inbound configuration](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-access-azureml-behind-firewall?tabs=ipaddress%2Cgov#inbound-configuration) section to add IP addresses for BatchNodeManagement and AzureMachineLearning.
 
--   **Microsoft Container Registry** is only needed if you plan on using
-    the *default Docker images provided by Microsoft*, and *enabling
-    user-managed dependencies*.
-
--   If you plan on using federated identity, follow the [**Best
-    practices for securing Active Directory Federation
-    Services**](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs) article.
-
-Also, use the information in the [inbound
-configuration](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-access-azureml-behind-firewall?tabs=ipaddress%2Cgov#inbound-configuration) section
-to add IP addresses for BatchNodeManagement and AzureMachineLearning.
-
-For information on restricting access to models deployed to AKS,
-see [Restrict egress traffic in Azure Kubernetes
-Service](https://docs.microsoft.com/en-us/azure/aks/limit-egress-traffic).
+For information on restricting access to models deployed to AKS, see [Restrict egress traffic in Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/limit-egress-traffic).
 
 **Monitoring, metrics, and diagnostics**
 
-To support logging of metrics and other monitoring information to Azure
-Monitor and Application Insights, allow outbound traffic to the
-following hosts:
+To support logging of metrics and other monitoring information to Azure Monitor and Application Insights, allow outbound traffic to the following hosts:
 
-** Note**
+  **Note**
 
-The information logged to these hosts is also used by Microsoft Support
-to be able to diagnose any problems you run into with your workspace.
+The information logged to these hosts is also used by Microsoft Support to be able to diagnose any problems you run into with your workspace.
 
--   **dc.applicationinsights.azure.com**
+- **dc.applicationinsights.azure.com**
+- **dc.applicationinsights.microsoft.com**
+- **dc.services.visualstudio.com**
+- \ ***.in.applicationinsights.azure.com**
 
--   **dc.applicationinsights.microsoft.com**
-
--   **dc.services.visualstudio.com**
-
--   \***.in.applicationinsights.azure.com**
-
-For a list of IP addresses for these hosts, see [IP addresses used by
-Azure
-Monitor](https://docs.microsoft.com/en-us/azure/azure-monitor/app/ip-addresses).
+For a list of IP addresses for these hosts, see [IP addresses used by Azure Monitor](https://docs.microsoft.com/en-us/azure/azure-monitor/app/ip-addresses).
 
 ## Step E: Secure training resources: beyond the internal compute instance and compute clusters, make sure all computes are secure
 
