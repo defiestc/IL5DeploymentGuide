@@ -171,7 +171,7 @@
 
     ![Indexer Definition highlighted](media/Cog_Search_Images/cog_search_index_json.png)
 
-2. Add `"executionEnvironment": "private"` to the the `"configuration"` parameter and click _Save_ at the top of the page.
+2. Add `"executionEnvironment": "private"` to the the `"configuration"` parameter and click _Save_ at the top of the page. Note that your configuration parameters may differ.
 
     ![Execution environment highlighted](media/Cog_Search_Images/cog_search_index_exec_environ.png)
 
