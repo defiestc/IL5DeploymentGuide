@@ -1,11 +1,10 @@
 # Azure Cognitive Search Overview
 
-## The following links can be used as references for additional information within the deployment guide, if needed
-
-> TODO: Necessary links to be added here
-
 ## Table of Contents
+
 [Prerequisites](#prerequisites)
+
+[Helpful Links](#helpful-links)
 
 [Deploy Cognitive Search Resource](#deploy-azure-cognitive-search-resource)
 
@@ -31,6 +30,17 @@
     * Azure Cosmos DB (SQL API)
     * Azure SQL Database
 4. Virtual Network (vNet) with available subnet space for private endpoints to enable inbound access.
+
+## Helpful Links
+
+The following links can be used as references for additional information within the deployment guide, if needed. This is not an exhaustive list as Azure documentation is updated frequently.
+
+* [Security overview for Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/search-security-overview)
+* [Secure access to external data for Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/search-indexer-securing-resources)
+* [Customer Managed Keys with Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/search-security-manage-encryption-keys?tabs=portal-pp%2Cmanaged-id-sys)
+* [Configure an IP firewall for Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/service-configure-firewall)
+* [Create a private endpoint for Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/service-create-private-endpoint)
+* [Connect through private endpoints with Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/search-indexer-howto-access-private?tabs=portal-create%2Cportal-status)
 
 ## Deploy and Secure Azure Cognitive Search
 
