@@ -46,10 +46,10 @@ Pre-requisites:
 
 
 Step 1- Login to portal.azure.gov and select *+Create Resource* in the top left of the screen.
-![image](https://user-images.githubusercontent.com/95705084/188921611-59302748-c098-485f-a2d5-e429f224075e.png)
+[image](https://user-images.githubusercontent.com/95705084/188921611-59302748-c098-485f-a2d5-e429f224075e.png)
 
 Step 2- In the search bar, type *Azure Synapse Analytics* and hit *Create* at the bottom of the returned result.
-![image](https://user-images.githubusercontent.com/95705084/188921819-a4bee48b-c77c-48d9-9614-07101650b787.png)
+[image](https://user-images.githubusercontent.com/95705084/188921819-a4bee48b-c77c-48d9-9614-07101650b787.png)
 
 Step 3- Once you have selected *Create*. a screen redirect will take place and you will be prompted to input the following information:
 
