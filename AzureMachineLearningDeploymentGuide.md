@@ -10,8 +10,6 @@
 > encrypted at rest with Microsoft-managed keys. Customers can use their
 > own keys for data stored in Azure Blob Storage. 
 
- 
-
 # Table of Contents 
 
 [Azure Machine Learning in IL5](#azure-machine-learning-in-il5)

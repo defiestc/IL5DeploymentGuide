@@ -1,5 +1,6 @@
-# Synapse Analytics Overview 
-### The following links below can be used as references for additional information within the deployment guide, if needed.
+# Synapse Analytics Overview
+
+### The following links below can be used as references for additional information within the deployment guide, if needed
 
 Pre-requsites - 
 
@@ -15,6 +16,7 @@ Azure Synapse Analytics security white paper - Azure Synapse Analytics | Microso
 
 
 ## Deployment Guide for Synapse Analytics
+
 ### This guide has been put together with the intent of assisting customers deploly Synapse within IL5. Each section is broken out by the following- 
 
   - Pre-requsites needed
@@ -144,11 +146,3 @@ Step 12-
 ![image](https://user-images.githubusercontent.com/95705084/189750274-778087c3-d335-4ede-9e35-ba4c39ee2100.png)
 
 Step 13 - Hit Next and validate connectivity by selecting the Synapse Workspace URL.
-
-
-
-
-
-
-
-
