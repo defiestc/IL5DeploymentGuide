@@ -109,10 +109,10 @@ Create a Private Endpoint
 	d. Private DNS integration
 
 Approval Process
-	1. Navigate to the Azure SQL database server selected in step 4c in the previous section.
-	2. Click on "Show networking settings" on the overview blade , in "Essentials" section at the top of the page.
-	3. Click on Private access
-    4. Verify that the private endpoint (created in the previous section) has the Connection state of "Approved"
+1. Navigate to the Azure SQL database server selected in step 4c in the previous section.
+2. Click on "Show networking settings" on the overview blade , in "Essentials" section at the top of the page.
+3. Click on Private access
+4. Verify that the private endpoint (created in the previous section) has the Connection state of "Approved"
 
 
 ## Deployment
