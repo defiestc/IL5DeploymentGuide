@@ -223,10 +223,9 @@ TDE Encryption with Customer-Managed Keys
 8. Steps 4 (Set acccess policy for SQL Server managed ID), and 5-7 should be repeated on all servers in Always On AGs
 9. Configure SQL Server
 	* Map the credential created in step 5 to the service account running SQL Service. Repeat on all SQL instances in Always On AGs.
-'''
-ALTER LOGIN [SQLserver4TDEDe\sqladmin]
-ADD CREDENTIAL [AKVCred4SQLServiceAcct];  --this cred was created in step 5
-'''
+	
+			ALTER LOGIN [SQLserver4TDEDe\sqladmin]
+			ADD CREDENTIAL [AKVCred4SQLServiceAcct];  --this cred was created in step 5
 		 
 	b. Create an Asymmetric Key by opening the Key created in the Key Vault.  Repeat on all SQL instances in Always On AGs.
 			CREATE ASYMMETRIC KEY AsymKeyTDE
