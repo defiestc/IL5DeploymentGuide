@@ -43,7 +43,7 @@ The following links can be used as references for additional information within 
 
 [Set up Transparent Data Encryption (TDE) Extensible Key Management with Azure Key Vault - SQL Server](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault?view=sql-server-ver15&tabs=portal#step-1-set-up-an-azure-ad-service-principal)
 
-## **Prerequisites**
+## Prerequisites
 ### Azure SQL Considerations
 
 When trying to decide between Azure SQL options the following factors should be considered by the customer: 
