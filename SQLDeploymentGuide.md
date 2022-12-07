@@ -228,10 +228,12 @@ TDE Encryption with Customer-Managed Keys
 			ADD CREDENTIAL [AKVCred4SQLServiceAcct];  --this cred was created in step 5
 		 
 	* Create an Asymmetric Key by opening the Key created in the Key Vault.  Repeat on all SQL instances in Always On AGs.
+
 			CREATE ASYMMETRIC KEY AsymKeyTDE
 			FROM PROVIDER  [AzureKeyVault_EKM_Prov] 
 			WITH PROVIDER_KEY_NAME = 'AsymSQLTDE',  --This key was created in step 3
 			CREATION_DISPOSITION = OPEN_EXISTING;
+
 
 	* Create a Login that will associate the asymmetric key to this login. This login needs a Cred. Repeat on all SQL instances in Always On AGs.
 			CREATE LOGIN Login4_AsymKeyTDE
