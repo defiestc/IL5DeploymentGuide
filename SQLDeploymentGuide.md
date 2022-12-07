@@ -227,41 +227,39 @@ TDE Encryption with Customer-Managed Keys
 			ALTER LOGIN [SQLserver4TDEDe\sqladmin]
 			ADD CREDENTIAL [AKVCred4SQLServiceAcct];  --this cred was created in step 5
 		 
-	b. Create an Asymmetric Key by opening the Key created in the Key Vault.  Repeat on all SQL instances in Always On AGs.
-			
-			```
+	* Create an Asymmetric Key by opening the Key created in the Key Vault.  Repeat on all SQL instances in Always On AGs.
 			CREATE ASYMMETRIC KEY AsymKeyTDE
 			FROM PROVIDER  [AzureKeyVault_EKM_Prov] 
 			WITH PROVIDER_KEY_NAME = 'AsymSQLTDE',  --This key was created in step 3
 			CREATION_DISPOSITION = OPEN_EXISTING;
-``` 
-	c. Create a Login that will associate the asymmetric key to this login. This login needs a Cred. Repeat on all SQL instances in Always On AGs.
+
+	* Create a Login that will associate the asymmetric key to this login. This login needs a Cred. Repeat on all SQL instances in Always On AGs.
 			CREATE LOGIN Login4_AsymKeyTDE
-			FROM ASYMMETRIC KEY AsymKeyTDE; --this key was created in step 9b
+			FROM ASYMMETRIC KEY AsymKeyTDE; --this key was created in step the second sub-step in step 9
 		 
-	d. Drop Cred from service account. Repeat on all SQL instances in Always On AGs.
+	* Drop Cred from service account. Repeat on all SQL instances in Always On AGs.
 			ALTER LOGIN [SQLserver4TDEDe\sqladmin]
 			drop CREDENTIAL [AKVCred4SQLServiceAcct];  
 		 
-	e. Add the credential mapping to the new Login. Repeat on all SQL instances in Always On AGs.
+	* Add the credential mapping to the new Login. Repeat on all SQL instances in Always On AGs.
 			ALTER LOGIN Login4_AsymKeyTDE
 			add CREDENTIAL [AKVCred4SQLServiceAcct];
 		 
-	f. Create a test database (if a database doesn’t exist) that will be encrypted with the Azure key vault key
+	* Create a test database (if a database doesn’t exist) that will be encrypted with the Azure key vault key
 			CREATE DATABASE TestTDE
 		 
-	g. Create an ENCRYPTION KEY using the ASYMMETRIC KEY. Only do this on the PRIMARY server (of each group for the database/s required)
+	* Create an ENCRYPTION KEY using the ASYMMETRIC KEY. Only do this on the PRIMARY server (of each group for the database/s required)
 			Use TestTDE
 			GO
 			CREATE DATABASE ENCRYPTION KEY
 			WITH ALGORITHM = AES_256
-			ENCRYPTION BY SERVER ASYMMETRIC KEY AsymKeyTDE; --key created in step 8b 
+			ENCRYPTION BY SERVER ASYMMETRIC KEY AsymKeyTDE; --key created in the second sub-step in step 8 
 		 
-	h. Enable TDE by setting ENCRYPTION ON. Only do this on the PRIMARY server (of each group for the database/s required)
+	* Enable TDE by setting ENCRYPTION ON. Only do this on the PRIMARY server (of each group for the database/s required)
 			ALTER DATABASE TestTDE
 			SET ENCRYPTION ON;
 		 
-	i. Check database encryption status
+	* Check database encryption status
 			SELECT
 			db.name,
 			dm.encryption_state_desc,
@@ -277,8 +275,8 @@ TDE Encryption with Customer-Managed Keys
 			GO
 	 
 10.  Restore a TDE encrypted database to another SQL Instance:
-	a. Repeat steps 9a-9e
+	a. Repeat the first 5 sub-steps in step 9
 	b. Restore database
-	c. Check status using step 9i
+	c. Check status using the last sub step in step 9
  
 
