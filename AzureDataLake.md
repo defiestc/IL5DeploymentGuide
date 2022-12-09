@@ -22,5 +22,15 @@ Step 4. Within the **Security** portion of the configuration, ensure the followi
           - Require secure transfer REST API operations.
           - Enable storage access key access.
           - Minimum TLS version is 1.2
-Step 5. **Important Step** If this is not checked off, this service will be rendered obsolete and will not be an ADLS Gen2 service. 
+Step 5. **Important Step** If this is not checked off or followed, this service will be rendered obsolete and will not be an ADLS Gen2 service. 
+          - The Data Lake Storage heirarchical namespace accelerates big data analytics workloads and enables file-level access control lists (ACLs).
+                     - Enable hierarchical namespace - **Please check this box** When selected a series of features will become available. Please select only if needed.
+                     - Enable SFTP - Optional
+                     - Access Tier - Select as needed. Please ensure the proper tier is selected.
+Step 6. Select **Next** at the bottom of the screen to be directed into the Networking portion of the setup. Ensure that **Disable public access and use private access** is selected. 
+Step 7. For routing preference, ensure that **Microsoft Network routing** is selected. This ensures your routing is traversing across Microsoft's fabric and is protected versus traversing across the internet. Select **Next** once completed to be directed to the Data Protection portion of the configuration.
+Step 8. The Recovery portion of this configuration can be left as is unless a specific policy is defined that needs to be followed. Please adjust as needed. Select **Next** at the bottom of the screen to be directed to the Encrpytion portion of the configuration.
+Step 9. For encryption type, please ensure Customer-Managed Keys are selected. This will ensure that the ADLS Gen2 resource will be protected by the approriately managed keys within Azure Key Vault. Azure Key Vault is a pre-requsite in this guide and is required - if this has not been setup, please follow the instructions within the Deployment Guide for deploying a Key Vault service.
+Step 10. Ensure that
+
           
