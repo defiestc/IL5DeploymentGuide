@@ -31,6 +31,9 @@ Step 6. Select **Next** at the bottom of the screen to be directed into the Netw
 Step 7. For routing preference, ensure that **Microsoft Network routing** is selected. This ensures your routing is traversing across Microsoft's fabric and is protected versus traversing across the internet. Select **Next** once completed to be directed to the Data Protection portion of the configuration.
 Step 8. The Recovery portion of this configuration can be left as is unless a specific policy is defined that needs to be followed. Please adjust as needed. Select **Next** at the bottom of the screen to be directed to the Encrpytion portion of the configuration.
 Step 9. For encryption type, please ensure Customer-Managed Keys are selected. This will ensure that the ADLS Gen2 resource will be protected by the approriately managed keys within Azure Key Vault. Azure Key Vault is a pre-requsite in this guide and is required - if this has not been setup, please follow the instructions within the Deployment Guide for deploying a Key Vault service.
-Step 10. Ensure that
+                  - Enable support for customer-managed keys: Please ensure All service types (blobs, files, tables, and queues) is selected.
+                  - Encrpytion key: Select a key vault and key would leverage the Azure Key Vault service. 
+                  - Enable infrastructure encryption: Ensure this is selected for an additional layer of encryption.
+Step 10. Select **Next** at the bottom of the screen until it arrives at the **Review** section of the configuration. Select **Review and Create** and the service will be created.
 
           
