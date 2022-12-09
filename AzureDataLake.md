@@ -42,6 +42,7 @@ Step 5. **Important Step** If this is not checked off or followed, this service 
         - Enable hierarchical namespace - **Please check this box** When selected a series of features will become available. Please select only if needed.
         - Enable SFTP - Optional
         - Access Tier - Select as needed. Please ensure the proper tier is selected.
+
 Step 6. Select **Next** at the bottom of the screen to be directed into the Networking portion of the setup. Ensure that **Disable public access and use private access** is selected.
 
 Step 7. For routing preference, ensure that **Microsoft Network routing** is selected. This ensures your routing is traversing across Microsoft's fabric and is protected versus traversing across the internet. Select **Next** once completed to be directed to the Data Protection portion of the configuration.
