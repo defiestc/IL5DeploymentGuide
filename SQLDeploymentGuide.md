@@ -90,6 +90,9 @@ In most cases, customers deploying SQL server on Azure VMs will have their own i
 ### Private Links for Azure SQL Database
 
 Create a Private Endpoint
+
+#### Prerequisites: Resource Group, Azure SQL Server, Virtual Network
+
 1. In the search box at the top of the portal, enter Private endpoint. Select Private endpoints.
 2. Select + Create in Private endpoints.
 3. In the Basics tab of Create a private endpoint, enter the following information:
