@@ -1136,8 +1136,11 @@ time, and then select **Save**.
 ![Screenshot of auto-shutdown option](./media/image56.png)
 
 Reference: 
+
 How to Use Custom DNS <https://learn.microsoft.com/azure/machine-learning/how-to-custom-dns>
+
 Workspace DNS Resolution Path for Azure Government <https://learn.microsoft.com/azure/machine-learning/how-to-custom-dns?tabs=azure-cli#workspace-dns-resolution-path>
+
 FQDN for DNS, Azure Government <https://learn.microsoft.com/azure/machine-learning/how-to-custom-dns?tabs=azure-cli#azure-us-government>
 
 ## Step D: Configure Firewall and Configure Inbound and Outbound Traffic
