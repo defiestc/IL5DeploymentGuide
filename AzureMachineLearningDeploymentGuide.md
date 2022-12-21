@@ -154,7 +154,7 @@ a.  To create a subnet for compute resources used to score your models,
 > to select them when following these steps.
 
 1.  Select **Security**. For **BastionHost**, select **Enable**. [Azure
-    Bastion](https://docs.microsoft.com/en-us/azure/bastion/bastion-overview) provides
+    Bastion](https://learn.microsoft.com/azure/bastion/bastion-overview) provides
     a secure way to access the VM jump box you will create inside the
     VNet in a later step. Use the following values for the remaining
     fields:
@@ -185,11 +185,11 @@ The steps in this article put Azure Container Registry behind the VNet.
 In this configuration, you can\'t deploy models to Azure Container
 Instances inside the VNet. For more information, see [Secure the
 inference
-environment](https://docs.microsoft.com/en-us/azure/machine-learning/v1/how-to-secure-inferencing-vnet).
+environment](https://learn.microsoft.com/azure/machine-learning/v1/how-to-secure-inferencing-vnet).
 
 ** Tip**
 
-As an alternative to Azure Container Instances, try Azure Machine Learning managed online endpoints. For more information, see [**Enable network isolation for managed online endpoints (preview)**](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-secure-online-endpoint).
+As an alternative to Azure Container Instances, try Azure Machine Learning managed online endpoints. For more information, see [**Enable network isolation for managed online endpoints (preview)**](https://learn.microsoft.com/azure/machine-learning/how-to-secure-online-endpoint).
 
  
 
@@ -199,8 +199,8 @@ As an alternative to Azure Container Instances, try Azure Machine Learning manag
 
 | Name (Azure portal) | Description |Effect(s) | Version (GitHub) |
 | --- | --- | --- | --- |
-| [[Preview]: Azure Key Vault should disable public network access](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F55615ac9-af46-4a59-874e-391cc3dfb490) | Disable public network access for your key vault so that it's not accessible over the public internet. This can reduce data leakage risks. Learn more at: [https://aka.ms/akvprivatelink](https://docs.microsoft.com/en-us/azure/key-vault/general/private-link-service). | Audit, Deny, Disabled | [1.1.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Key%20Vault/AzureKeyVaultFirewallEnabled_Audit.json) |
-| [Azure Machine Learning workspaces should be encrypted with a customer-managed key](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fba769a63-b8cc-4b2d-abf6-ac33c7204be8) | Manage encryption at rest of Azure Machine Learning workspace data with customer-managed keys. By default, customer data is encrypted with service-managed keys, but customer-managed keys are commonly required to meet regulatory compliance standards. Customer-managed keys enable the data to be encrypted with an Azure Key Vault key created and owned by you. You have full control and responsibility for the key lifecycle, including rotation and management. Learn more at [https://aka.ms/azureml-workspaces-cmk](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-create-workspace-template#deploy-an-encrypted-workspace%22). | Audit, Deny, Disabled | [1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Machine%20Learning/Workspace_CMKEnabled_Audit.json) |
+| [[Preview]: Azure Key Vault should disable public network access](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F55615ac9-af46-4a59-874e-391cc3dfb490) | Disable public network access for your key vault so that it's not accessible over the public internet. This can reduce data leakage risks. Learn more at: [https://aka.ms/akvprivatelink](https://learn.microsoft.com/azure/key-vault/general/private-link-service). | Audit, Deny, Disabled | [1.1.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Key%20Vault/AzureKeyVaultFirewallEnabled_Audit.json) |
+| [Azure Machine Learning workspaces should be encrypted with a customer-managed key](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fba769a63-b8cc-4b2d-abf6-ac33c7204be8) | Manage encryption at rest of Azure Machine Learning workspace data with customer-managed keys. By default, customer data is encrypted with service-managed keys, but customer-managed keys are commonly required to meet regulatory compliance standards. Customer-managed keys enable the data to be encrypted with an Azure Key Vault key created and owned by you. You have full control and responsibility for the key lifecycle, including rotation and management. Learn more at [https://aka.ms/azureml-workspaces-cmk](https://learn.microsoft.com/azure/machine-learning/how-to-create-workspace-template#deploy-an-encrypted-workspace%22). | Audit, Deny, Disabled | [1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Machine%20Learning/Workspace_CMKEnabled_Audit.json) |
 | [Key vaults should have purge protection enabled](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) | Malicious deletion of a key vault can lead to permanent data loss. A malicious insider in your organization can potentially delete and purge key vaults. Purge protection protects you from insider attacks by enforcing a mandatory retention period for soft deleted key vaults. No one inside your organization or Microsoft will be able to purge your key vaults during the soft delete retention period. | Audit, Deny, Disabled | [2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
 | [Key vaults should have soft delete enabled](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1e66c121-a66a-4b1f-9b83-0fd99bf0fc2d) | Deleting a key vault without soft delete enabled permanently deletes all secrets, keys, and certificates stored in the key vault. Accidental deletion of a key vault can lead to permanent data loss. Soft delete allows you to recover an accidentally deleted key vault for a configurable retention period. | Audit, Deny, Disabled | [2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_SoftDeleteMustBeEnabled_Audit.json) |
 | [Resource logs in Key Vault should be enabled](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf820ca0-f99e-4f3e-84fb-66e913812d21) | Audit enabling of resource logs. This enables you to recreate activity trails to use for investigation purposes when a security incident occurs or when your network is compromised | AuditIfNotExists, Disabled | [5.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_AuditDiagnosticLog_Audit.json) |
@@ -221,7 +221,7 @@ portal](https://portal.azure.us/), PowerShell, or Azure CLI. To learn
 how to configure encryption with customer-managed keys stored in a
 managed HSM, see [Configure encryption with customer-managed keys stored
 in Azure Key Vault Managed
-HSM](https://docs.microsoft.com/en-us/azure/storage/common/customer-managed-keys-configure-key-vault-hsm).
+HSM](https://learn.microsoft.com/azure/storage/common/customer-managed-keys-configure-key-vault-hsm).
 
 ** Note**
 
@@ -234,9 +234,9 @@ You can use a new or existing key vault to store customer-managed keys.
 The storage account and key vault may be in different regions or
 subscriptions in the same tenant. To learn more about Azure Key Vault,
 see [Azure Key Vault
-Overview](https://docs.microsoft.com/en-us/azure/key-vault/general/overview) and [What
+Overview](https://learn.microsoft.com/azure/key-vault/general/overview) and [What
 is Azure Key
-Vault?](https://docs.microsoft.com/en-us/azure/key-vault/general/basic-concepts).
+Vault?](https://learn.microsoft.com/azure/key-vault/general/basic-concepts).
 
 Using customer-managed keys with Azure Storage encryption requires that
 both soft delete and purge protection be enabled for the key vault**.
@@ -247,7 +247,7 @@ create the key vault or after it is created.
 To learn how to create a key vault with the [Azure
 portal](https://portal.azure.us/), see [Quickstart: Create a key vault
 using the Azure
-portal](https://docs.microsoft.com/en-us/azure/key-vault/general/quick-create-portal).
+portal](https://learn.microsoft.com/azure/key-vault/general/quick-create-portal).
 When you create the key vault, select **Enable purge protection**, as
 shown in the following image.
 
@@ -305,7 +305,7 @@ Next, add a key to the key vault.
 Azure Storage encryption supports RSA and RSA-HSM keys of sizes 2048,
 3072 and 4096. For more information about supported key types,
 see [About
-keys](https://docs.microsoft.com/en-us/azure/key-vault/keys/about-keys).
+keys](https://learn.microsoft.com/azure/key-vault/keys/about-keys).
 
 To add a key to the vault, you just need to take a couple of additional
 steps. In this case, we add a key that could be used by an application.
@@ -344,14 +344,14 @@ your scenario:
 
 To learn more about system-assigned versus user-assigned managed
 identities, see [Managed identity
-types](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview#managed-identity-types).
+types](https://learn.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#managed-identity-types).
 
 **Use a user-assigned managed identity to authorize access**
 
 A user-assigned is a standalone Azure resource. To learn how to create
 and manage a user-assigned managed identity, see [Manage user-assigned
 managed
-identities](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities).
+identities](https://learn.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities).
 
 Both new and existing storage accounts can use a user-assigned identity
 to authorize access to the key vault. You must create the user-assigned
@@ -363,10 +363,10 @@ user-assigned identity through the portal user interface. For details,
 see one of the following sections:
 
 -   [Configure customer-managed keys for a new
-    account](https://docs.microsoft.com/en-us/azure/storage/common/customer-managed-keys-configure-key-vault?tabs=portal#configure-customer-managed-keys-for-a-new-account)
+    account](https://learn.microsoft.com/azure/storage/common/customer-managed-keys-configure-key-vault?tabs=portal#configure-customer-managed-keys-for-a-new-account)
 
 -   [Configure customer-managed keys for an existing
-    account](https://docs.microsoft.com/en-us/azure/storage/common/customer-managed-keys-configure-key-vault?tabs=portal#configure-customer-managed-keys-for-an-existing-account)
+    account](https://learn.microsoft.com/azure/storage/common/customer-managed-keys-configure-key-vault?tabs=portal#configure-customer-managed-keys-for-an-existing-account)
 
 **Use a system-assigned managed identity to authorize access**
 
@@ -387,7 +387,7 @@ portal](https://portal.azure.us/) with a system-assigned managed
 identity, the system-assigned managed identity is assigned to the
 storage account for you under the covers. For details, see [Configure
 customer-managed keys for an existing
-account](https://docs.microsoft.com/en-us/azure/storage/common/customer-managed-keys-configure-key-vault?tabs=portal#configure-customer-managed-keys-for-an-existing-account).
+account](https://learn.microsoft.com/azure/storage/common/customer-managed-keys-configure-key-vault?tabs=portal#configure-customer-managed-keys-for-an-existing-account).
 
 **Configure the key vault access policy**
 
@@ -395,21 +395,21 @@ The next step is to configure the key vault access policy. The key vault
 access policy grants permissions to the managed identity that will be
 used to authorize access to the key vault. To learn more about key vault
 access policies, see [Azure Key Vault
-Overview](https://docs.microsoft.com/en-us/azure/key-vault/general/overview#securely-store-secrets-and-keys) and [Azure
+Overview](https://learn.microsoft.com/azure/key-vault/general/overview#securely-store-secrets-and-keys) and [Azure
 Key Vault security
-overview](https://docs.microsoft.com/en-us/azure/key-vault/general/security-features#key-vault-authentication-options).
+overview](https://learn.microsoft.com/azure/key-vault/general/security-features#key-vault-authentication-options).
 
 **Assign a Key Vault access policy**
 
 A Key Vault access policy determines whether a given security principal,
 namely a user, application or user group, can perform different
 operations on Key
-Vault [secrets](https://docs.microsoft.com/en-us/azure/key-vault/secrets/), [keys](https://docs.microsoft.com/en-us/azure/key-vault/keys/),
-and [certificates](https://docs.microsoft.com/en-us/azure/key-vault/certificates/).
+Vault [secrets](https://learn.microsoft.com/azure/key-vault/secrets/), [keys](https://learn.microsoft.com/azure/key-vault/keys/),
+and [certificates](https://learn.microsoft.com/azure/key-vault/certificates/).
 You can assign access policies using the [Azure
-portal](https://docs.microsoft.com/en-us/azure/key-vault/general/assign-access-policy-portal),
+portal](https://learn.microsoft.com/azure/key-vault/general/assign-access-policy-portal),
 the Azure CLI, or [Azure
-PowerShell](https://docs.microsoft.com/en-us/azure/key-vault/general/assign-access-policy-powershell).
+PowerShell](https://learn.microsoft.com/azure/key-vault/general/assign-access-policy-powershell).
 
 Key vault supports up to 1024 access policy entries, with each entry
 granting a distinct set of permissions to a particular security
@@ -418,7 +418,7 @@ policies to groups of users, where possible, rather than individual
 users. Using groups makes it much easier to manage permissions for
 multiple people in your organization. For more information, see [Manage
 app and resource access using Azure Active Directory
-groups](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-manage-groups)
+groups](https://learn.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)
 
 **Assign an access policy**
 
@@ -450,7 +450,7 @@ policy](./media/image16.png)
 If you\'re using a managed identity for the app, search for and select
 the name of the app itself. (For more information on security
 principals, see [Key Vault
-authentication](https://docs.microsoft.com/en-us/azure/key-vault/general/authentication).
+authentication](https://learn.microsoft.com/azure/key-vault/general/authentication).
 
 5.  Back in the **Add access policy** pane, select **Add** to save the
     access policy.
@@ -486,7 +486,7 @@ automatic updating of the key version, follow these steps:
     create a new account.
 
 2.  Follow the steps outlined in [Create a storage
-    account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create) to
+    account](https://learn.microsoft.com/azure/storage/common/storage-account-create) to
     fill out the fields on the **Basics**, **Advanced**, **Networking**,
     and **Data Protection** tabs.
 
@@ -511,7 +511,7 @@ storage account in Azure portal](./media/image19.png)
 You can also configure customer-managed keys with manual updating of the
 key version when you create a new storage account. Follow the steps
 described in [Configure encryption for manual updating of key
-versions](https://docs.microsoft.com/en-us/azure/storage/common/customer-managed-keys-configure-key-vault?tabs=portal#configure-encryption-for-manual-updating-of-key-versions).
+versions](https://learn.microsoft.com/azure/storage/common/customer-managed-keys-configure-key-vault?tabs=portal#configure-encryption-for-manual-updating-of-key-versions).
 
 **Configure customer-managed keys for an existing account**
 
@@ -532,7 +532,7 @@ To rotate a key, create a new version of the key in Azure Key Vault.
 Azure Storage does not handle key rotation, so you will need to manage
 rotation of the key in the key vault. You can [**configure key
 auto-rotation in Azure Key
-Vault**](https://docs.microsoft.com/en-us/azure/key-vault/keys/how-to-configure-key-rotation) or
+Vault**](https://learn.microsoft.com/azure/key-vault/keys/how-to-configure-key-rotation) or
 rotate your key manually.
 
 **Configure encryption for automatic updating of key versions**
@@ -580,7 +580,7 @@ portal.](./media/image21.png)
     vault. The options include **System-assigned** (the default)
     or **User-assigned**. To learn more about each type of managed
     identity, see [Managed identity
-    types](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview#managed-identity-types).
+    types](https://learn.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#managed-identity-types).
 
     1.  If you select **System-assigned**, the system-assigned managed
         identity for the storage account is created under the covers, if
@@ -590,7 +590,7 @@ portal.](./media/image21.png)
         existing user-assigned identity that has permissions to access
         the key vault. To learn how to create a user-assigned identity,
         see [Manage user-assigned managed
-        identities](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities).
+        identities](https://learn.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities).
 
 ![Screenshot showing how to select a user-assigned managed identity for
 key vault
@@ -778,7 +778,7 @@ resource\'](./media/image29.png)
 
     -   **Private DNS Zone**: Leave the two private DNS zones at the
         default values
-        of **privatelink.api.azureml.ms** and **privatelink.notebooks.azure.net**.
+        of **privatelink.api.ml.azure.us** and **privatelink.notebooks.usgovcloudapi.net**.
 
 Select **OK** to create the private endpoint.
 
@@ -862,7 +862,7 @@ connect to the secure workspace:
 
 | **Method** | **Description** |
 | --- | --- |
-| [Azure VPN gateway](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways) | Connects on-premises networks to the VNet over a private connection. Connection is made over the public internet. |
+| [Azure VPN gateway](https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) | Connects on-premises networks to the VNet over a private connection. Connection is made over the public internet. |
 | [ExpressRoute](https://azure.microsoft.com/services/expressroute/) | Connects on-premises networks into the cloud over a private connection. Connection is made using a connectivity provider. |
 
 ** Important**
@@ -870,7 +870,7 @@ connect to the secure workspace:
 When using a **VPN gateway** or **ExpressRoute**, you will need to plan
 how name resolution works between your on-premises resources and those
 in the VNet. For more information, see [**Use a custom DNS
-server**](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-custom-dns).
+server**](https://learn.microsoft.com/azure/machine-learning/how-to-custom-dns).
 
 **Create a jump box (VM)**
 
@@ -1032,15 +1032,15 @@ including how to do so with Python and the CLI, see the following
 articles:
 
 -   [Create a compute
-    cluster](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-create-attach-compute-cluster)
+    cluster](https://learn.microsoft.com/azure/machine-learning/how-to-create-attach-compute-cluster)
 
 -   [Create a compute
-    instance](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-create-manage-compute-instance)
+    instance](https://learn.microsoft.com/azure/machine-learning/how-to-create-manage-compute-instance)
 
 **Configure image builds**
 
 **APPLIES TO:** ![](./media/image53.png) [Azure CLI ml extension **v2
-(current)**](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-cli)
+(current)**](https://learn.microsoft.com/azure/machine-learning/how-to-configure-cli)
 
 When Azure Container Registry is behind the virtual network, Azure
 Machine Learning can\'t use it to directly build Docker images (used for
@@ -1087,18 +1087,18 @@ In this configuration, you cannot deploy a model to Azure Container
 Instances inside the VNet. We do not recommend using Azure Container
 Instances with Azure Machine Learning in a virtual network. For more
 information, see [**Secure the inference
-environment**](https://docs.microsoft.com/en-us/azure/machine-learning/v1/how-to-secure-inferencing-vnet).
+environment**](https://learn.microsoft.com/azure/machine-learning/v1/how-to-secure-inferencing-vnet).
 
 As an alternative to Azure Container Instances, try Azure Machine
 Learning managed online endpoints. For more information, see [**Enable
 network isolation for managed online endpoints
-(preview)**](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-secure-online-endpoint).
+(preview)**](https://learn.microsoft.com/azure/machine-learning/how-to-secure-online-endpoint).
 
 At this point, you can use studio to interactively work with notebooks
 on the compute instance and run training jobs on the compute cluster.
 For a tutorial on using the compute instance and compute cluster,
 see [run a Python
-script](https://docs.microsoft.com/en-us/azure/machine-learning/tutorial-1st-experiment-hello-world).
+script](https://learn.microsoft.com/azure/machine-learning/tutorial-1st-experiment-hello-world).
 
 **Stop compute instance and jump box**
 
@@ -1135,6 +1135,11 @@ time, and then select **Save**.
 
 ![Screenshot of auto-shutdown option](./media/image56.png)
 
+Reference: 
+How to Use Custom DNS <https://learn.microsoft.com/azure/machine-learning/how-to-custom-dns>
+Workspace DNS Resolution Path for Azure Government <https://learn.microsoft.com/azure/machine-learning/how-to-custom-dns?tabs=azure-cli#workspace-dns-resolution-path>
+FQDN for DNS, Azure Government <https://learn.microsoft.com/azure/machine-learning/how-to-custom-dns?tabs=azure-cli#azure-us-government>
+
 ## Step D: Configure Firewall and Configure Inbound and Outbound Traffic
 
 **Well-known ports**
@@ -1164,15 +1169,15 @@ Azure Machine Learning requires both inbound and outbound access to the public i
 | Outbound | 443 | AzureFrontDoor.FrontEnd <br />\* Not needed in Azure China. | Global entry point for [Azure Machine Learning studio](https://ml.azure.com/). Store images and environments for AutoML. |
 | Outbound | 443 | ContainerRegistry.region | Access docker images provided by Microsoft. |
 | Outbound | 443 | MicrosoftContainerRegistry.region <br />**Note**  that this tag has a dependency on the  **AzureFrontDoor.FirstParty**  tag | Access docker images provided by Microsoft. Setup of the Azure Machine Learning router for Azure Kubernetes Service. |
-| Outbound | 443 | Keyvault.region | Access the key vault for the Azure Batch service. Only needed if your workspace was created with the [hbi\_workspace](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) flag enabled. |
+| Outbound | 443 | Keyvault.region | Access the key vault for the Azure Batch service. Only needed if your workspace was created with the [hbi\_workspace](https://learn.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) flag enabled. |
 
   **Tip**
 
 >If you need the IP addresses instead of service tags, use one of the following options:
 
 >- Download a list from [**Azure IP Ranges and Service Tags**](https://www.microsoft.com/download/details.aspx?id=56519).
->- Use the Azure CLI [**az network list-service-tags**](https://docs.microsoft.com/en-us/cli/azure/network#az-network-list-service-tags) command.
->- Use the Azure PowerShell [**Get-AzNetworkServiceTag**](https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkservicetag) command.
+>- Use the Azure CLI [**az network list-service-tags**](https://learn.microsoft.com/cli/azure/network#az-network-list-service-tags) command.
+>- Use the Azure PowerShell [**Get-AzNetworkServiceTag**](https://learn.microsoft.com/powershell/module/az.network/get-aznetworkservicetag) command.
 
 The IP addresses may change periodically.
 
@@ -1198,9 +1203,9 @@ You may also need to allow  **outbound**  traffic to Visual Studio Code and non-
 
 When using Azure Kubernetes Service (AKS) with Azure Machine Learning, allow the following traffic to the AKS VNet:
 
-- General inbound/outbound requirements for AKS as described in the [Restrict egress traffic in Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/limit-egress-traffic) article.
+- General inbound/outbound requirements for AKS as described in the [Restrict egress traffic in Azure Kubernetes Service](https://learn.microsoft.com/azure/aks/limit-egress-traffic) article.
 - **Outbound**  to mcr.microsoft.com.
-- When deploying a model to an AKS cluster, use the guidance in the [Deploy ML models to Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/machine-learning/v1/how-to-deploy-azure-kubernetes-service#connectivity) article.
+- When deploying a model to an AKS cluster, use the guidance in the [Deploy ML models to Azure Kubernetes Service](https://learn.microsoft.com/azure/machine-learning/v1/how-to-deploy-azure-kubernetes-service#connectivity) article.
 
 **Azure Firewall**
 
@@ -1208,12 +1213,12 @@ When using Azure Kubernetes Service (AKS) with Azure Machine Learning, allow the
 
 Azure Firewall provides security _for Azure Virtual Network resources_. Some Azure Services, such as Azure Storage Accounts, have their own firewall settings that _apply to the public endpoint for that specific service instance_. The information in this document is specific to Azure Firewall.
 
-For information on service instance firewall settings, see [**Use studio in a virtual network**](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-enable-studio-virtual-network#firewall-settings).
+For information on service instance firewall settings, see [**Use studio in a virtual network**](https://learn.microsoft.com/azure/machine-learning/how-to-enable-studio-virtual-network#firewall-settings).
 
-- For  **inbound**  traffic to Azure Machine Learning compute cluster and compute instance, use [user-defined routes (UDRs)](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview) to skip the firewall.
+- For  **inbound**  traffic to Azure Machine Learning compute cluster and compute instance, use [user-defined routes (UDRs)](https://learn.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) to skip the firewall.
 - For  **outbound**  traffic, create  **network**  and  **application**  rules.
 
-These rule collections are described in more detail in [What are some Azure Firewall concepts](https://docs.microsoft.com/en-us/azure/firewall/firewall-faq#what-are-some-azure-firewall-concepts).
+These rule collections are described in more detail in [What are some Azure Firewall concepts](https://learn.microsoft.com/azure/firewall/firewall-faq#what-are-some-azure-firewall-concepts).
 
 **Inbound configuration**
 
@@ -1221,16 +1226,16 @@ When using Azure Machine Learning  **compute instance**  (with a public IP) or  
 
   **Important**
 
-Using service tags with user-defined routes is now GA. For more information, see [**Virtual Network routing**](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview#service-tags-for-user-defined-routes).
+Using service tags with user-defined routes is now GA. For more information, see [**Virtual Network routing**](https://learn.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#service-tags-for-user-defined-routes).
 
   **Tip**
 
 >While a compute instance without a public IP (a preview feature) does not need a UDR for this inbound traffic, you will still need these UDRs if you also use a compute cluster or a compute instance with a public IP.
 
->- [IP Address routes](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-access-azureml-behind-firewall?tabs=ipaddress%2Cgov#tabpanel_1_ipaddress)
->- [Service tag routes](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-access-azureml-behind-firewall?tabs=ipaddress%2Cgov#tabpanel_1_servicetag)
+>- [IP Address routes](https://learn.microsoft.com/azure/machine-learning/how-to-access-azureml-behind-firewall?tabs=ipaddress%2Cgov#tabpanel_1_ipaddress)
+>- [Service tag routes](https://learn.microsoft.com/azure/machine-learning/how-to-access-azureml-behind-firewall?tabs=ipaddress%2Cgov#tabpanel_1_servicetag)
 
-For the Azure Machine Learning service, you must add the IP address of both the  **primary**  and  **secondary**  regions. To find the secondary region, see the [Cross-region replication in Azure](https://docs.microsoft.com/en-us/azure/availability-zones/cross-region-replication-azure). For example, if your Azure Machine Learning service is in East US 2, the secondary region is Central US.
+For the Azure Machine Learning service, you must add the IP address of both the  **primary**  and  **secondary**  regions. To find the secondary region, see the [Cross-region replication in Azure](https://learn.microsoft.com/azure/availability-zones/cross-region-replication-azure). For example, if your Azure Machine Learning service is in East US 2, the secondary region is Central US.
 
 To get a list of IP addresses of the Batch service and Azure Machine Learning service, download the [Azure IP Ranges and Service Tags](https://www.microsoft.com/download/details.aspx?id=56519) and search the file for BatchNodeManagement.\<region\> and AzureMachineLearning.\<region\>, where \<region\> is your Azure region.
 
@@ -1242,7 +1247,7 @@ When creating the UDR, set the  **Next hop type**  to  **Internet**. This means 
 
 ![](RackMultipart20220918-1-c8q07x_html_372a031470321684.png)
 
-For information on configuring UDR, see [Route network traffic with a routing table](https://docs.microsoft.com/en-us/azure/virtual-network/tutorial-create-route-table-portal).
+For information on configuring UDR, see [Route network traffic with a routing table](https://learn.microsoft.com/azure/virtual-network/tutorial-create-route-table-portal).
 
 **Outbound configuration**
 
@@ -1262,7 +1267,7 @@ For information on configuring UDR, see [Route network traffic with a routing ta
 1. **Tip**
   - region is only needed for custom Docker images. Including small modifications (such as additional packages) to base images provided by Microsoft.
   - region is only needed if you plan on using the _default Docker images provided by Microsoft_, and _enabling user-managed dependencies_.
-  - region is only needed if your workspace was created with the [**hbi\_workspace**](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) flag enabled.
+  - region is only needed if your workspace was created with the [**hbi\_workspace**](https://learn.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) flag enabled.
   - For entries that contain region, replace with the Azure region that you're using. For example, AzureContainerRegistry.westus.
 2. Add  **Application rules**  for the following hosts:
 
@@ -1287,20 +1292,20 @@ For information on configuring UDR, see [Route network traffic with a routing ta
 
 For  **Protocol:Port** , select use  **http, https**.
 
-For more information on configuring application rules, see [Deploy and configure Azure Firewall](https://docs.microsoft.com/en-us/azure/firewall/tutorial-firewall-deploy-portal#configure-an-application-rule).
+For more information on configuring application rules, see [Deploy and configure Azure Firewall](https://learn.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal#configure-an-application-rule).
 
-1. To restrict outbound traffic for models deployed to Azure Kubernetes Service (AKS), see the [Restrict egress traffic in Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/limit-egress-traffic) and [Deploy ML models to Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/machine-learning/v1/how-to-deploy-azure-kubernetes-service#connectivity) articles.
+1. To restrict outbound traffic for models deployed to Azure Kubernetes Service (AKS), see the [Restrict egress traffic in Azure Kubernetes Service](https://learn.microsoft.com/azure/aks/limit-egress-traffic) and [Deploy ML models to Azure Kubernetes Service](https://learn.microsoft.com/azure/machine-learning/v1/how-to-deploy-azure-kubernetes-service#connectivity) articles.
 
 **Kubernetes Compute**
 
-[Kubernetes Cluster](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-attach-kubernetes-anywhere) running behind an outbound proxy server or firewall needs extra network configuration. Configure the [Azure Arc network requirements](https://docs.microsoft.com/en-us/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements) needed by Azure Arc agents. The following outbound URLs are also required for Azure Machine Learning,
+[Kubernetes Cluster](https://learn.microsoft.com/azure/machine-learning/how-to-attach-kubernetes-anywhere) running behind an outbound proxy server or firewall needs extra network configuration. Configure the [Azure Arc network requirements](https://learn.microsoft.com/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements) needed by Azure Arc agents. The following outbound URLs are also required for Azure Machine Learning,
 
 | **Outbound Endpoint** | **Port** | **Description** | **Training** | **Inference** |
 | --- | --- | --- | --- | --- |
 | **\*.kusto.windows.net** <br />**\*.table.core.windows.net** <br />**\*.queue.core.windows.net** | https:443 | Required to upload system logs to Kusto. | ✓ | ✓ |
 | **\*.azurecr.io** | https:443 | Azure container registry, required to pull docker images used for machine learning workloads. | ✓ | ✓ |
 | **\*.blob.core.windows.net** | https:443 | Azure blob storage, required to fetch machine learning project scripts,data or models, and upload job logs/outputs. | ✓ | ✓ |
-| **\*.workspace.\<region\>.api.azureml.ms** <br />**\<region\>.experiments.azureml.net** <br />**\<region\>.api.azureml.ms** | https:443 | Azure Machine Learning service API. | ✓ | ✓ |
+| **\*.workspace.\<region\>.api.ml.azure.us** <br />**\<region\>.experiments.azureml.net** <br />**\<region\>.api.ml.azure.us** | https:443 | Azure Machine Learning service API. | ✓ | ✓ |
 | **pypi.org** | https:443 | Python package index, to install pip packages used for training job environment initialization. | ✓ | N/A |
 | **archive.ubuntu.com** <br />**security.ubuntu.com** <br />**ppa.launchpad.net** | http:80 | Required to download the necessary security patches. | ✓ | N/A |
 
@@ -1349,7 +1354,7 @@ In the following table, replace \<storage\> with the name of the default storage
 
   **Tip**
 
-- The host for  **Azure Key Vault**  is only needed if your workspace was created with the [**hbi\_workspace**](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) flag enabled.
+- The host for  **Azure Key Vault**  is only needed if your workspace was created with the [**hbi\_workspace**](https://learn.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) flag enabled.
 - Ports 8787 and 18881 for  **compute instance**  are only needed when your Azure Machine workspace has a private endpoint.
 - In the following table, replace \<storage\> with the name of the default storage account for your Azure Machine Learning workspace.
 - Websocket communication must be allowed to the compute instance. If you block websocket traffic, Jupyter notebooks won't work correctly.
@@ -1358,7 +1363,7 @@ In the following table, replace \<storage\> with the name of the default storage
 | --- | --- | --- | --- |
 | Compute cluster/instance | graph.windows.net | TCP | 443 |
 | Compute instance | \*.instances.azureml.us | TCP | 443 |
-| Compute instance | \*.instances.azureml.ms | TCP | 443, 8787, 18881 |
+| Compute instance | \*.instances.azureml.us | TCP | 443, 8787, 18881 |
 | Microsoft storage access | \*.blob.core.usgovcloudapi.net | TCP | 443 |
 | Microsoft storage access | \*.table.core.usgovcloudapi.net | TCP | 443 |
 | Microsoft storage access | \*.queue.core.usgovcloudapi.net | TCP | 443 |
@@ -1377,11 +1382,11 @@ In the following table, replace \<storage\> with the name of the default storage
 
 - **Azure Container Registry**  is required for any custom Docker image. This includes small modifications (such as additional packages) to base images provided by Microsoft.
 - **Microsoft Container Registry**  is only needed if you plan on using the _default Docker images provided by Microsoft_, and _enabling user-managed dependencies_.
-- If you plan on using federated identity, follow the [**Best practices for securing Active Directory Federation Services**](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs) article.
+- If you plan on using federated identity, follow the [**Best practices for securing Active Directory Federation Services**](https://learn.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs) article.
 
-Also, use the information in the [inbound configuration](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-access-azureml-behind-firewall?tabs=ipaddress%2Cgov#inbound-configuration) section to add IP addresses for BatchNodeManagement and AzureMachineLearning.
+Also, use the information in the [inbound configuration](https://learn.microsoft.com/azure/machine-learning/how-to-access-azureml-behind-firewall?tabs=ipaddress%2Cgov#inbound-configuration) section to add IP addresses for BatchNodeManagement and AzureMachineLearning.
 
-For information on restricting access to models deployed to AKS, see [Restrict egress traffic in Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/limit-egress-traffic).
+For information on restricting access to models deployed to AKS, see [Restrict egress traffic in Azure Kubernetes Service](https://learn.microsoft.com/azure/aks/limit-egress-traffic).
 
 **Monitoring, metrics, and diagnostics**
 
@@ -1396,7 +1401,7 @@ To support logging of metrics and other monitoring information to Azure Monitor 
 >- **dc.services.visualstudio.com**
 >- \ ***.in.applicationinsights.azure.com**
 
-For a list of IP addresses for these hosts, see [IP addresses used by Azure Monitor](https://docs.microsoft.com/en-us/azure/azure-monitor/app/ip-addresses).
+For a list of IP addresses for these hosts, see [IP addresses used by Azure Monitor](https://learn.microsoft.com/azure/azure-monitor/app/ip-addresses).
 
 ## Step E: Secure training resources: beyond the internal compute instance and compute clusters, make sure all computes are secure
 
@@ -1419,7 +1424,7 @@ By default, you do not have public internet access from No Public IP
 Compute Cluster. You need to configure User Defined Routing (UDR) to
 reach to a public IP to access the internet. For example, you can use a
 public IP of your firewall, or you can use [**Virtual Network
-NAT**](https://docs.microsoft.com/en-us/azure/virtual-network/nat-gateway/nat-overview) with
+NAT**](https://learn.microsoft.com/azure/virtual-network/nat-gateway/nat-overview) with
 a public IP.
 
 A compute cluster with **No public IP** enabled has **no inbound
@@ -1432,14 +1437,14 @@ inbound from source **AzureLoadBalancer** and any port source to
 destination **VirtualNetwork** and port **44224** destination.
 
 **No public IP** clusters are dependent on [Azure Private
-Link](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-private-link) for
+Link](https://learn.microsoft.com/azure/machine-learning/how-to-configure-private-link) for
 Azure Machine Learning workspace. A compute cluster with **No public
 IP** also requires you to disable private endpoint network policies and
 private link service network policies. These requirements come from
 Azure private link service and private endpoints and aren\'t Azure
 Machine Learning specific. Follow instruction from [Disable network
 policies for Private Link
-service](https://docs.microsoft.com/en-us/azure/private-link/disable-private-link-service-network-policy) to
+service](https://learn.microsoft.com/azure/private-link/disable-private-link-service-network-policy) to
 set the
 parameters disable-private-endpoint-network-policies and disable-private-link-service-network-policies on
 the virtual network subnet.
@@ -1447,7 +1452,7 @@ the virtual network subnet.
 For **outbound connections** to work, you need to set up an egress
 firewall such as Azure firewall with user defined routes. For instance,
 you can use a firewall set up with [inbound/outbound
-configuration](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-access-azureml-behind-firewall) and
+configuration](https://learn.microsoft.com/azure/machine-learning/how-to-access-azureml-behind-firewall) and
 route traffic there by defining a route table on the subnet in which the
 compute cluster is deployed. The route table entry can set up the next
 hop of the private IP address of the firewall with the address prefix of
@@ -1482,9 +1487,9 @@ West US, Australia East, Japan East, Japan West.
     specified subnet has PrivateLinkServiceNetworkPolicies or
     PrivateEndpointNetworkEndpoints enabled, follow the instructions
     from [Disable network policies for Private Link
-    service](https://docs.microsoft.com/en-us/azure/private-link/disable-private-link-service-network-policy) and [Disable
+    service](https://learn.microsoft.com/azure/private-link/disable-private-link-service-network-policy) and [Disable
     network policies for Private
-    Endpoint](https://docs.microsoft.com/en-us/azure/private-link/disable-private-endpoint-network-policy).
+    Endpoint](https://learn.microsoft.com/azure/private-link/disable-private-endpoint-network-policy).
 
 -   If job execution fails with connection issues to ACR or Azure
     Storage, verify that customer has added ACR and Azure Storage
@@ -1544,48 +1549,48 @@ This article is part of a series on securing an Azure Machine Learning
 workflow. See the other articles in this series:
 
 -   [**Virtual network
-    overview**](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-network-security-overview)
+    overview**](https://learn.microsoft.com/azure/machine-learning/how-to-network-security-overview)
 
 -   [**Secure the workspace
-    resources**](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-secure-workspace-vnet)
+    resources**](https://learn.microsoft.com/azure/machine-learning/how-to-secure-workspace-vnet)
 
 -   [**Secure the training
-    environment**](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-secure-training-vnet)
+    environment**](https://learn.microsoft.com/azure/machine-learning/how-to-secure-training-vnet)
 
 -   For securing inference, see the following documents:
 
     -   If using CLI v1 or SDK v1 - [**Secure inference
-        environment**](https://docs.microsoft.com/en-us/azure/machine-learning/v1/how-to-secure-inferencing-vnet)
+        environment**](https://learn.microsoft.com/azure/machine-learning/v1/how-to-secure-inferencing-vnet)
 
     -   If using CLI v2 or SDK v2 - [**Network isolation for managed
         online
-        endpoints**](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-secure-online-endpoint)
+        endpoints**](https://learn.microsoft.com/azure/machine-learning/how-to-secure-online-endpoint)
 
 -   [**Use custom
-    DNS**](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-custom-dns)
+    DNS**](https://learn.microsoft.com/azure/machine-learning/how-to-custom-dns)
 
 -   [**Use a
-    firewall**](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-access-azureml-behind-firewall)
+    firewall**](https://learn.microsoft.com/azure/machine-learning/how-to-access-azureml-behind-firewall)
 
 For a tutorial on creating a secure workspace, see [**Tutorial: Create a
 secure
-workspace**](https://docs.microsoft.com/en-us/azure/machine-learning/tutorial-create-secure-workspace) or [**Tutorial:
+workspace**](https://learn.microsoft.com/azure/machine-learning/tutorial-create-secure-workspace) or [**Tutorial:
 Create a secure workspace using a
-template**](https://docs.microsoft.com/en-us/azure/machine-learning/tutorial-create-secure-workspace-template).
+template**](https://learn.microsoft.com/azure/machine-learning/tutorial-create-secure-workspace-template).
 
 **Prerequisites**
 
 -   Read the [Network security
-    overview](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-network-security-overview) to
+    overview](https://learn.microsoft.com/azure/machine-learning/how-to-network-security-overview) to
     understand common virtual network scenarios and architecture.
 
 -   A pre-existing virtual network and subnet to use.
 
 -   An existing [Azure Machine Learning workspace with a private
-    endpoint](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-secure-workspace-vnet#secure-the-workspace-with-private-endpoint).
+    endpoint](https://learn.microsoft.com/azure/machine-learning/how-to-secure-workspace-vnet#secure-the-workspace-with-private-endpoint).
 
 -   An existing [Azure storage account added your virtual
-    network](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-secure-workspace-vnet#secure-azure-storage-accounts).
+    network](https://learn.microsoft.com/azure/machine-learning/how-to-secure-workspace-vnet#secure-azure-storage-accounts).
 
 **Limitations**
 
@@ -1634,7 +1639,7 @@ account.
     blob storage.
 
 For more information, see the [Blob Data
-Reader](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) built-in
+Reader](https://learn.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) built-in
 role.
 
 2.  **Grant the workspace managed identity the \'Reader\' role for
@@ -1652,7 +1657,7 @@ and dfs (Azure Data Lake Storage Gen2). Add the managed identity to all
 these endpoints.
 
 For more information, see
-the [Reader](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#reader) built-in
+the [Reader](https://learn.microsoft.com/azure/role-based-access-control/built-in-roles#reader) built-in
 role.
 
 3.  **Enable managed identity authentication for default storage
@@ -1675,14 +1680,14 @@ used for your workspace default storage accounts.
 4.  **Configure datastores to use managed identity authentication**.
     After you add an Azure storage account to your virtual network with
     either a [service
-    endpoint](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-secure-workspace-vnet?tabs=se#secure-azure-storage-accounts) or [private
-    endpoint](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-secure-workspace-vnet?tabs=pe#secure-azure-storage-accounts),
+    endpoint](https://learn.microsoft.com/azure/machine-learning/how-to-secure-workspace-vnet?tabs=se#secure-azure-storage-accounts) or [private
+    endpoint](https://learn.microsoft.com/azure/machine-learning/how-to-secure-workspace-vnet?tabs=pe#secure-azure-storage-accounts),
     you must configure your datastore to use [managed
-    identity](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview) authentication.
+    identity](https://learn.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) authentication.
     Doing so lets the studio access data in your storage account.
 
 Azure Machine Learning
-uses [datastore](https://docs.microsoft.com/en-us/azure/machine-learning/concept-data#datastore) to
+uses [datastore](https://learn.microsoft.com/azure/machine-learning/concept-data#datastore) to
 connect to storage accounts. When creating a new datastore, use the
 following steps to configure a datastore to use managed identity
 authentication:
@@ -1716,7 +1721,7 @@ POSIX-style access control lists. You can assign the workspace\'s
 managed identity access to resources just like any other security
 principal. For more information, see [Access control in Azure Data Lake
 Storage
-Gen1](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-access-control).
+Gen1](https://learn.microsoft.com/azure/data-lake-store/data-lake-store-access-control).
 
 **Datastore: Azure Data Lake Storage Gen2**
 
@@ -1725,14 +1730,14 @@ Azure RBAC and POSIX-style access control lists (ACLs) to control data
 access inside of a virtual network.
 
 **To use Azure RBAC**, follow the steps in the [Datastore: Azure Storage
-Account](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-enable-studio-virtual-network#datastore-azure-storage-account) section
+Account](https://learn.microsoft.com/azure/machine-learning/how-to-enable-studio-virtual-network#datastore-azure-storage-account) section
 of this article. Data Lake Storage Gen2 is based on Azure Storage, so
 the same steps apply when using Azure RBAC.
 
 **To use ACLs**, the workspace\'s managed identity can be assigned
 access just like any other security principal. For more information,
 see [Access control lists on files and
-directories](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-access-control#access-control-lists-on-files-and-directories).
+directories](https://learn.microsoft.com/azure/storage/blobs/data-lake-storage-access-control#access-control-lists-on-files-and-directories).
 
 **Datastore: Azure SQL Database**
 
@@ -1740,11 +1745,11 @@ To access data stored in an Azure SQL Database with a managed identity,
 you must create a SQL contained user that maps to the managed identity.
 For more information on creating a user from an external provider,
 see [Create contained users mapped to Azure AD
-identities](https://docs.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-configure#create-contained-users-mapped-to-azure-ad-identities).
+identities](https://learn.microsoft.com/azure/azure-sql/database/authentication-aad-configure#create-contained-users-mapped-to-azure-ad-identities).
 
 After you create a SQL contained user, grant permissions to it by using
 the [GRANT T-SQL
-command](https://docs.microsoft.com/en-us/sql/t-sql/statements/grant-object-permissions-transact-sql).
+command](https://learn.microsoft.com/sql/t-sql/statements/grant-object-permissions-transact-sql).
 
 **Intermediate component output**
 
@@ -1765,7 +1770,7 @@ Make sure that you have access to the intermediate storage accounts in
 your virtual network. Otherwise, the pipeline will fail.
 
 [Enable managed identity
-authentication](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-enable-studio-virtual-network#enable-managed-identity) for
+authentication](https://learn.microsoft.com/azure/machine-learning/how-to-enable-studio-virtual-network#enable-managed-identity) for
 intermediate storage accounts to visualize output data.
 
 **Access the studio from a resource inside the VNet**
@@ -1791,7 +1796,7 @@ when using the Azure Machine Learning SDK or CLI.
 
 Azure Machine Learning studio is supported when using the Azure Firewall
 service. For more information, see [**Use your workspace behind a
-firewall**](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-access-azureml-behind-firewall).
+firewall**](https://learn.microsoft.com/azure/machine-learning/how-to-access-azureml-behind-firewall).
 
 ## Step G: Final Check with IL5 Standards
 
@@ -1800,8 +1805,8 @@ standards, including the following points.
 
 |**(Azure portal)** | **Description** | **Effect(s)** | **Version <br />(GitHub)** |
 | --- | --- | --- | --- |
-| [  **Learning workspaces should use private link**](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F40cec1dd-a100-4920-b15b-3024fe8901ab) | **Azure Private Link lets you connect your virtual network to Azure services without a public IP address at the source or destination. The Private Link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to Azure Machine Learning workspaces, data leakage risks are reduced. Learn more about private links at: ** [**https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link**](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-private-link) **.** | **Audit, Deny, Disabled** | [**1.1.0**](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/Workspace_PrivateEndpoint_Audit.json) |
-| [**Azure Machine Learning workspaces should be encrypted with a customer-managed key**](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fba769a63-b8cc-4b2d-abf6-ac33c7204be8) | **Manage encryption at rest of Azure Machine Learning workspace data with customer-managed keys. By default, customer data is encrypted with service-managed keys, but customer-managed keys are commonly required to meet regulatory compliance standards. Customer-managed keys enable the data to be encrypted with an Azure Key Vault key created and owned by you. You have full control and responsibility for the key lifecycle, including rotation and management. Learn more at ** [**https://aka.ms/azureml-workspaces-cmk**](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-create-workspace-template#deploy-an-encrypted-workspace%22) **.** | **Audit, Deny, Disabled** | [**1.0.3**](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Machine%20Learning/Workspace_CMKEnabled_Audit.json) |
+| [  **Learning workspaces should use private link**](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F40cec1dd-a100-4920-b15b-3024fe8901ab) | **Azure Private Link lets you connect your virtual network to Azure services without a public IP address at the source or destination. The Private Link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to Azure Machine Learning workspaces, data leakage risks are reduced. Learn more about private links at: ** [**https://learn.microsoft.com/azure/machine-learning/how-to-configure-private-link**](https://learn.microsoft.com/azure/machine-learning/how-to-configure-private-link) **.** | **Audit, Deny, Disabled** | [**1.1.0**](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/Workspace_PrivateEndpoint_Audit.json) |
+| [**Azure Machine Learning workspaces should be encrypted with a customer-managed key**](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fba769a63-b8cc-4b2d-abf6-ac33c7204be8) | **Manage encryption at rest of Azure Machine Learning workspace data with customer-managed keys. By default, customer data is encrypted with service-managed keys, but customer-managed keys are commonly required to meet regulatory compliance standards. Customer-managed keys enable the data to be encrypted with an Azure Key Vault key created and owned by you. You have full control and responsibility for the key lifecycle, including rotation and management. Learn more at ** [**https://aka.ms/azureml-workspaces-cmk**](https://learn.microsoft.com/azure/machine-learning/how-to-create-workspace-template#deploy-an-encrypted-workspace%22) **.** | **Audit, Deny, Disabled** | [**1.0.3**](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Machine%20Learning/Workspace_CMKEnabled_Audit.json) |
 
 Reference:
-<https://docs.microsoft.com/en-us/azure/governance/policy/samples/gov-dod-impact-level-5>
+<https://learn.microsoft.com/azure/governance/policy/samples/gov-dod-impact-level-5>
