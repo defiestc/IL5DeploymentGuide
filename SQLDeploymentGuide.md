@@ -110,6 +110,7 @@ Create a Private Endpoint
 	* Subnet
 	* Private IP configuration
 	* Private DNS integration
+6. In the Review and Create tab, click Create.
 
 Approval Process
 1. Navigate to the Azure SQL database server selected in step 4c in the previous section.
