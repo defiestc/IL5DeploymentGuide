@@ -187,7 +187,7 @@ Create a single database in the Azure portal:
 ## Encryption
 ### Key Vault integration with Azure SQL VMs
 
-1. To create a single database in the Azure portal, in the search bar at the top in the Azure Portal, type "Sql database"
+1. To create a single database in the Azure portal, in the search bar at the top in the Azure Portal, type "Sql databases", and select SQL databases from the listed Services.
 2. Select + Create, or use the Create SQL Database button
 3. On the Basics tab of the Create SQL Database form, under Project details, select the desired Azure Subscription.
 	* For Resource group, select Create new or pick an existing one from the drop down list
