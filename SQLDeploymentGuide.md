@@ -187,8 +187,9 @@ Create a single database in the Azure portal:
 ## Encryption
 ### Key Vault integration with Azure SQL VMs
 
-1. To create a single database in the Azure portal, type "Sql database" in the search bar at the top in azure portal, and click "Create"
-2. On the Basics tab of the Create SQL Database form, under Project details, select the desired Azure Subscription.
+1. To create a single database in the Azure portal, in the search bar at the top in the Azure Portal, type "Sql database"
+2. Select + Create, or use the Create SQL Database button
+3. On the Basics tab of the Create SQL Database form, under Project details, select the desired Azure Subscription.
 	* For Resource group, select Create new or pick an existing one from the drop down list
 	* Enter a database name
 	* For Server, select Create new, and fill out the New server form with the following values:
@@ -199,14 +200,14 @@ Create a single database in the Azure portal:
 	* Leave Want to use SQL elastic pool set to No.
 	* Under Compute + storage, select Configure database and choose your service tier and compute tier
 	* Under Backup storage redundancy, choose a redundancy option for the storage account where your backups will be saved. 
-3. Select Next: Networking at the bottom of the page.
+4. Select Next: Networking at the bottom of the page.
 	* For Firewall rules, set Add current client IP address to Yes. Leave Allow Azure services and resources to access this server set to No.
 	* On the Networking tab, for Connectivity method, select Private endpoint. Configure a new private endpoint as explained in section: Private Endpoint for Azure SQL Database
 	* Under Connection policy, choose the Default connection policy, and leave the Minimum TLS version at the default of TLS 1.2.
 	* On the Security page, you can choose to start a free trial of Microsoft Defender for SQL, as well as configure Ledger, Managed identities and Transparent data encryption (TDE) if you desire. Select Next: Additional settings at the bottom of the page.
-4. On the Additional settings tab, in the Data source section, for Use existing data, select "none".  You can also configure database collation and a maintenance window.
-5. Select Review + create at the bottom of the page.
-6. On the Review + create page, after reviewing, select Create.
+5. On the Additional settings tab, in the Data source section, for Use existing data, select "none".  You can also configure database collation and a maintenance window.
+6. Select Review + create at the bottom of the page.
+7. On the Review + create page, after reviewing, select Create.
 
 ### Customer Managed keys for SQL Availability Groups
 
