@@ -292,8 +292,9 @@ TDE Encryption with Customer-Managed Keys
 			GO
 	 
 10.  Restore a TDE encrypted database to another SQL Instance:
-	* Repeat the first 5 sub-steps in step 9
-	* Restore database
+	* Ensure repeat of the first 5 sub-steps in step 9
+	* Restore database and transaction log with NORECOVERY
+	* On Primary Node, ALTER AVAILBAILITY GROUP AG1 ADD DATABASE TestTDE
+	* On Secondary Node, ALTER DATABASE TestTDE SET HADR AVAILABILITY GROUP = AG1
 	* Check status using the last sub step in step 9
- 
 
