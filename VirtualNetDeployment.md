@@ -300,6 +300,8 @@ have the option to delete and edit this private endpoint. Select the
 \"Review + Create\" button and create the key vault. It will take 5-10
 minutes for the deployment to complete.
 
+![Key Vault Access Configuration](./media/AzureKeyVaultAccessConfig.png)
+
 **Add a key**
 
 Next, add a key to the key vault.
@@ -325,7 +327,7 @@ The key is called **ExampleKey**.
 
     -   **Options**: Generate.
 
-    -   **Name**: ExampleKey.
+    -   **Name**: key-nfexwc-cio-sandbox.
 
     -   Leave the other values to their defaults. Click **Create**.
 
