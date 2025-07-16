@@ -1,4 +1,4 @@
-# Azure Virtual Network and Key Vault in IL5
+# Azure Virtual Network and Key Vault in IL4 & IL5
 
 ## Overview
 
@@ -301,6 +301,10 @@ minutes for the deployment to complete.
 **Add a key**
 
 Next, add a key to the key vault.
+
+Before you add a key, ensure that you have the appropriate RBAC access:
+
+![Screenshot showing which RBAC is needed](./media/AzureKeyVaultRBAC.png)
 
 Azure Storage encryption supports RSA and RSA-HSM keys of sizes 2048,
 3072 and 4096. For more information about supported key types,
