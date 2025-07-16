@@ -376,6 +376,8 @@ see one of the following sections:
 -   [Configure customer-managed keys for an existing
     account](https://learn.microsoft.com/azure/storage/common/customer-managed-keys-configure-key-vault?tabs=portal#configure-customer-managed-keys-for-an-existing-account)
 
+The user-assigned managed identity must have permissions to access the key in the key vault. Assign the **Key Vault Crypto Service Encryption User** role to the user-assigned managed identity with key vault scope to grant these permissions.
+
 **Use a system-assigned managed identity to authorize access**
 
 A system-assigned managed identity is associated with an instance of an
