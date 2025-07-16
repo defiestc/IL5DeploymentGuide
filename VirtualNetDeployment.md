@@ -176,6 +176,8 @@ button](./media/image9.png)
 
 2.  Verify that the information is correct, and then select **Create**.
 
+![Screenshot showing Network settings for virtual network](./media/AzureKeyVault.png)
+
 ![Screenshot of the review
 page](./media/image10.png)
 
